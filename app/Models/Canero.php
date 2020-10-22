@@ -10,5 +10,5 @@ class Canero extends Model
     use HasFactory;
     protected $table = 'canero';
     public $timestamps = false;
-    protected $fillable = ['cod_canero','direccion','identificacion','nombre','telefono','fecha_proceso','fecha_hasta','indicador'];
+    protected $fillable = ['cod_canero','direccion','identificacion','nombre','telefono','fecha_proceso','fecha_hasta','indicador','usuario'];
 }

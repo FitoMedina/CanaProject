@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Canero;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Validator;
 
 class CaneroController extends Controller
 {
@@ -18,7 +21,13 @@ class CaneroController extends Controller
      */
     public function index()
     {
-        $canero = Canero::all();
+        //$canero = Canero::all();
+        
+        $canero = DB::table('canero')
+                     ->select(DB::raw('*'))
+                     ->where('indicador', '=', 'A')
+                     ->get();
+
         return view('admin\canero\index', compact('canero'));
     }
 
@@ -40,9 +49,28 @@ class CaneroController extends Controller
      */
     public function store(Request $request)
     {
-        var_dump($request->all());
-        die();
-        echo "CREAR CATEGORIAS";
+        $validator = Validator::make($request->all(), [
+            'cod_canero' => ['required', 'max:255'],
+            'direccion' => ['required', 'max:255'],
+        ]);
+
+        if ($validator->fails()) {
+            //
+        }
+        else
+        {
+        $canero = new Canero();
+        $canero->cod_canero = $request->cod_canero;
+        $canero->direccion = $request->direccion;
+        $canero->identificacion = $request->identificacion;
+        $canero->nombre = $request->nombre;
+        $canero->telefono = $request->telefono;
+        $canero->fecha_proceso = date('Y-m-d H:i:s');
+        $canero->fecha_hasta = '2050-01-01';
+        $canero->indicador =  'A';
+        $canero->save();
+        return redirect()->back();
+        }
     }
 
     /**
@@ -76,7 +104,23 @@ class CaneroController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $canero = Canero::find($id);
+        $canero->fecha_hasta = date('Y-m-d H:i:s');
+        $canero->indicador = 'D';
+        $canero->save();
+
+        $canero = new Canero();
+        $canero->cod_canero = $request->cod_canero;
+        $canero->direccion = $request->direccion;
+        $canero->identificacion = $request->identificacion;
+        $canero->nombre = $request->nombre;
+        $canero->telefono = $request->telefono;
+        $canero->fecha_proceso = date('Y-m-d H:i:s');
+        $canero->fecha_hasta = '2050-01-01';
+        $canero->indicador =  'A';
+        $canero->save();
+
+        return redirect()->back();
     }
 
     /**
@@ -87,6 +131,16 @@ class CaneroController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $canero = Canero::find($id);
+        $canero->fecha_hasta = date('Y-m-d H:i:s');
+        $canero->indicador = 'D';
+        $canero->save();
+        
+        return redirect()->back();
+        /**
+        * $canero = Canero::findOrFail($id);
+        * $canero->delete();
+        * return redirect()->back();
+        */
     }
 }

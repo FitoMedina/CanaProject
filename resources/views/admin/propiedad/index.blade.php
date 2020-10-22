@@ -5,8 +5,8 @@
 
 @section('content_header')
 <h1>
-    Cañeros
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-create-canero">
+    Propiedades
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-create-propiedad">
         Crear
     </button>
 </h1>
@@ -18,38 +18,38 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title">Listado de cañeros</h3>
+                    <h3 class="card-title">Listado de propiedades</h3>
                 </div>
             <!-- /.card-header -->
             <div class="card-body">
-                <table id="caneros" class="table table-bordered table-striped">
+                <table id="propiedades" class="table table-bordered table-striped">
                     <thead>
                         <tr>
                             <th>Codigo</th>
                             <th>Nombre</th>
-                            <th>Direccion</th>
-                            <th>Identificacion</th>
-                            <th>Telefono</th>
+                            <th>Hectareas</th>
+                            <th>Ubicacion</th>
+                            <th>Cañero</th>
                             <th>Creado</th>
                             <th>Acciones</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($canero as $caneros)
+                        @foreach ($propiedad as $propiedades)
                         <tr>
-                            <td>{{$caneros->cod_canero}}</td>
-                            <td>{{$caneros->nombre}}</td>
-                            <td>{{$caneros->direccion}}</td>
-                            <td>{{$caneros->identificacion}}</td>
-                            <td>{{$caneros->telefono}}</td>
-                            <td>{{$caneros->fecha_proceso}}</td>
+                            <td>{{$propiedades->codigo}}</td>
+                            <td>{{$propiedades->nombre}}</td>
+                            <td>{{$propiedades->hectareas}}</td>
+                            <td>{{$propiedades->ubicacion}}</td>
+                            <td>{{$propiedades->canero}}</td>
+                            <td>{{$propiedades->fecha_proceso}}</td>
                             <td>
-                                <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#modal-update-canero-{{$caneros->id}}">Editar</button>
-                                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modal-delete-canero-{{$caneros->id}}">Eliminar</button>
+                                <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#modal-update-propiedad-{{$propiedades->id}}">Editar</button>
+                                <button type="button" class="btn btn-danger"  data-toggle="modal" data-target="#modal-delete-propiedad-{{$propiedades->id}}">Eliminar</button>
                             </td>
                         </tr>
-                        @include('admin.canero.modal-update-canero')
-                        @include('admin.canero.modal-delete-canero')
+                        @include('admin.propiedad.modal-update-propiedad')
+                        @include('admin.propiedad.modal-delete-propiedad')
                         @endforeach
                         
                     </tbody>
@@ -65,33 +65,36 @@
 </div>
 
 <!-- modal -->
-<div class="modal fade" id="modal-create-canero">
+<div class="modal fade" id="modal-create-propiedad">
     <div class="modal-dialog">
         <div class="modal-content bg-default">
 
             <div class="modal-header">
-                <h4 class="modal-title">Crear Cañero</h4>
+                <h4 class="modal-title">Crear Propiedad</h4>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span></button>
             </div>
 
-            <form action="/canero" method="POST">
+            <form action="/propiedad" method="POST">
             
             {{ csrf_field() }}
                 <div class="modal-body">
                     <div class="form-group">
-                        <label for="cod_canero">Codigo</label>
-                        <input type="text" name="cod_canero" class="form-control" id="cod_canero" >
-                        {!! $errors->first('cod_canero','<small>:message</small>') !!}
-                        <label for="direccion">Direccion</label>
-                        <input type="text" name="direccion" class="form-control" id="direccion">
-                        {!! $errors->first('direccion','<small>:message</small>') !!}
-                        <label for="identificacion">Identificacion</label>
-                        <input type="text" name="identificacion" class="form-control" id="identificacion">
                         <label for="nombre">Nombre</label>
-                        <input type="text" name="nombre" class="form-control" id="nombre">
-                        <label for="telefono">Telefono</label>
-                        <input type="text" name="telefono" class="form-control" id="telefono">
+                        <input type="text" name="nombre" class="form-control" id="nombre" >
+                        <label for="hectareas">Hectareas</label>
+                        <input type="text" name="hectareas" class="form-control" id="hectareas">
+                        <label for="ubicacion">Ubicacion</label>
+                        <input type="text" name="ubicacion" class="form-control" id="ubicacion" >
+                        <label for="cod_canero">Cañero</label>
+                        <div class="dropdown">
+                            <select name='cod_canero' id='cod_canero' class="form-control">
+                                <option value=''>Seleccionar</option>
+                                @foreach ($canero as $caneros)
+                                <option value="{{ $caneros->cod_canero }}">"{{ $caneros->nombre }}"</option>
+                                @endforeach
+                            </select>
+                        </div>
                     </div>
                 </div>
 
@@ -117,7 +120,7 @@
 @section('js')
 <script>
 $(document).ready(function() {
-    $('#caneros').DataTable( {
+    $('#propiedades').DataTable( {
         "order": [[ 3, "desc" ]],
         "language": {
             "lengthMenu": "Mostrar " +

@@ -5,8 +5,8 @@
 
 @section('content_header')
 <h1>
-    Cañeros
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-create-canero">
+    Lotes
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-create-lote">
         Crear
     </button>
 </h1>
@@ -18,38 +18,34 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title">Listado de cañeros</h3>
+                    <h3 class="card-title">Listado de lotes</h3>
                 </div>
             <!-- /.card-header -->
             <div class="card-body">
-                <table id="caneros" class="table table-bordered table-striped">
+                <table id="lotes" class="table table-bordered table-striped">
                     <thead>
                         <tr>
                             <th>Codigo</th>
-                            <th>Nombre</th>
-                            <th>Direccion</th>
-                            <th>Identificacion</th>
-                            <th>Telefono</th>
+                            <th>Distancia</th>
+                            <th>Propiedad</th>
                             <th>Creado</th>
                             <th>Acciones</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($canero as $caneros)
+                        @foreach ($lote as $lotes)
                         <tr>
-                            <td>{{$caneros->cod_canero}}</td>
-                            <td>{{$caneros->nombre}}</td>
-                            <td>{{$caneros->direccion}}</td>
-                            <td>{{$caneros->identificacion}}</td>
-                            <td>{{$caneros->telefono}}</td>
-                            <td>{{$caneros->fecha_proceso}}</td>
+                            <td>{{$lotes->codigo}}</td>
+                            <td>{{$lotes->distancia}}</td>
+                            <td>{{$lotes->propiedad}}</td>
+                            <td>{{$lotes->fecha_proceso}}</td>
                             <td>
-                                <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#modal-update-canero-{{$caneros->id}}">Editar</button>
-                                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modal-delete-canero-{{$caneros->id}}">Eliminar</button>
+                                <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#modal-update-lote-{{$lotes->id}}">Editar</button>
+                                <button type="button" class="btn btn-danger"  data-toggle="modal" data-target="#modal-delete-lote-{{$lotes->id}}">Eliminar</button>
                             </td>
                         </tr>
-                        @include('admin.canero.modal-update-canero')
-                        @include('admin.canero.modal-delete-canero')
+                        @include('admin.lote.modal-update-lote')
+                        @include('admin.lote.modal-delete-lote')
                         @endforeach
                         
                     </tbody>
@@ -65,33 +61,32 @@
 </div>
 
 <!-- modal -->
-<div class="modal fade" id="modal-create-canero">
+<div class="modal fade" id="modal-create-lote">
     <div class="modal-dialog">
         <div class="modal-content bg-default">
 
             <div class="modal-header">
-                <h4 class="modal-title">Crear Cañero</h4>
+                <h4 class="modal-title">Crear Lote</h4>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span></button>
             </div>
 
-            <form action="/canero" method="POST">
+            <form action="/lote" method="POST">
             
             {{ csrf_field() }}
                 <div class="modal-body">
                     <div class="form-group">
-                        <label for="cod_canero">Codigo</label>
-                        <input type="text" name="cod_canero" class="form-control" id="cod_canero" >
-                        {!! $errors->first('cod_canero','<small>:message</small>') !!}
-                        <label for="direccion">Direccion</label>
-                        <input type="text" name="direccion" class="form-control" id="direccion">
-                        {!! $errors->first('direccion','<small>:message</small>') !!}
-                        <label for="identificacion">Identificacion</label>
-                        <input type="text" name="identificacion" class="form-control" id="identificacion">
-                        <label for="nombre">Nombre</label>
-                        <input type="text" name="nombre" class="form-control" id="nombre">
-                        <label for="telefono">Telefono</label>
-                        <input type="text" name="telefono" class="form-control" id="telefono">
+                        <label for="distancia">Distancia</label>
+                        <input type="text" name="distancia" class="form-control" id="distancia" >
+                        <label for="cod_propiedad">Propiedad</label>
+                        <div class="dropdown">
+                            <select name='cod_propiedad' id='cod_propiedad' class="form-control">
+                                <option value=''>Seleccionar</option>
+                                @foreach ($propiedad as $propiedades)
+                                <option value="{{ $propiedades->codigo }}">"{{ $propiedades->nombre }}"</option>
+                                @endforeach
+                            </select>
+                        </div>
                     </div>
                 </div>
 
@@ -117,7 +112,7 @@
 @section('js')
 <script>
 $(document).ready(function() {
-    $('#caneros').DataTable( {
+    $('#lotes').DataTable( {
         "order": [[ 3, "desc" ]],
         "language": {
             "lengthMenu": "Mostrar " +

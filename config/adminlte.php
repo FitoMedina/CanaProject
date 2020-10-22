@@ -241,18 +241,56 @@ return [
             'url'  => 'admin/blog',
             'can'  => 'manage-blog',
         ],
-        [
-            'text'        => 'pages',
-            'url'         => 'home2',
-            'icon'        => 'far fa-fw fa-file',
-            'label'       => 4,
-            'label_color' => 'success',
-        ],
-        ['header' => 'account_settings'],
+        ['header' => 'Menu'],
         [
             'text' => 'Cañeros',
             'url'  => 'canero',
             'icon' => 'fas fa-fw fa-user',
+        ],
+        [
+            'text' => 'Cargos',
+            'url'  => 'cargo',
+            'icon' => 'fas fa-fw fa-user-tag',
+        ],
+        [
+            'text' => 'Trabajadores',
+            'url'  => 'trabajador',
+            'icon' => 'fas fa-fw fa-user-tie',
+        ],
+        [
+            'text' => 'Cortes',
+            'url'  => 'corte',
+            'icon' => 'fas fa-fw fa-cut',
+        ],
+        [
+            'text' => 'Tipos de Caña',
+            'url'  => 'tipo',
+            'icon' => 'fas fa-fw fa-seedling',
+        ],
+        [
+            'text' => 'Propiedades',
+            'url'  => 'propiedad',
+            'icon' => 'fas fa-fw fa-home',
+        ],
+        [
+            'text' => 'Lotes',
+            'url'  => 'lote',
+            'icon' => 'fas fa-fw fa-warehouse',
+        ],
+        [
+            'text' => 'Vehiculos',
+            'url'  => 'vehiculo',
+            'icon' => 'fas fa-fw fa-truck-pickup',
+        ],
+        [
+            'text' => 'Chatas',
+            'url'  => 'chata',
+            'icon' => 'fas fa-fw fa-trailer',
+        ],
+        [
+            'text' => 'Contratos',
+            'url'  => 'contrato',
+            'icon' => 'fas fa-fw fa-file-contract',
         ],
         [
             'text' => 'change_password',
@@ -296,22 +334,6 @@ return [
                     'url'  => '#',
                 ],
             ],
-        ],
-        ['header' => 'labels'],
-        [
-            'text'       => 'important',
-            'icon_color' => 'red',
-            'url'        => '#',
-        ],
-        [
-            'text'       => 'warning',
-            'icon_color' => 'yellow',
-            'url'        => '#',
-        ],
-        [
-            'text'       => 'information',
-            'icon_color' => 'cyan',
-            'url'        => '#',
         ],
     ],
 

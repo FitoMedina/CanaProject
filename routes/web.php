@@ -1,7 +1,18 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
+
 use App\Http\Controllers\CaneroController;
+use App\Http\Controllers\CargoController;
+use App\Http\Controllers\TrabajadorController;
+use App\Http\Controllers\CorteController;
+use App\Http\Controllers\TipocanaController;
+use App\Http\Controllers\PropiedadController;
+use App\Http\Controllers\LoteController;
+use App\Http\Controllers\VehiculoController;
+use App\Http\Controllers\ChataController;
+use App\Http\Controllers\ContratoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,4 +39,12 @@ Auth::routes();
 
 //Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::resource('canero', CaneroController::class);
-//Route::get('/canero', [App\Http\Controllers\CaneroController::class, 'index'])->name('canero.index');
+Route::resource('cargo', CargoController::class);
+Route::resource('trabajador', TrabajadorController::class);
+Route::resource('corte', CorteController::class);
+Route::resource('tipo', TipocanaController::class);
+Route::resource('propiedad', PropiedadController::class);
+Route::resource('lote', LoteController::class);
+Route::resource('vehiculo', VehiculoController::class);
+Route::resource('chata', ChataController::class);
+Route::resource('contrato', ContratoController::class);
