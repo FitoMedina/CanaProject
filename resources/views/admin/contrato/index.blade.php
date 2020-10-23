@@ -4,6 +4,7 @@
 @section('title', 'Cana')
 
 @section('content_header')
+
 <h1>
     Contrato
     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-create-contrato">
@@ -12,7 +13,9 @@
 </h1>
 @stop
 
+
 @section('content')
+
 <div class="container-fluid">
     <div class="row">
         <div class="col-12">
@@ -46,20 +49,23 @@
                             <td>{{$contratos->faltas}}</td>
                             <td>{{$contratos->fecha_inicio}}</td>
                             <td>{{$contratos->fecha_fin}}</td>
-                            <td>{{$contratos->incentivo}}</td>
+                            <td>{{$contratos->incentivob}}</td>
                             <td>{{$contratos->monto_incentivo}}</td>
                             <td>{{$contratos->sueldo}}</td>
-                            <td>{{$contratos->viatico}}</td>
+                            <td>{{$contratos->viaticob}}</td>
                             <td>{{$contratos->trabajador}}</td>
                             <td>{{$contratos->canero}}</td>
                             <td>{{$contratos->fecha_proceso}}</td>
                             <td>
+                                <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modal-faltas-contrato-{{$contratos->id}}">Faltas</button>
                                 <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#modal-update-contrato-{{$contratos->id}}">Editar</button>
                                 <button type="button" class="btn btn-danger"  data-toggle="modal" data-target="#modal-delete-contrato-{{$contratos->id}}">Eliminar</button>
                             </td>
                         </tr>
+                        @include('admin.contrato.modal-faltas-contrato')
                         @include('admin.contrato.modal-update-contrato')
                         @include('admin.contrato.modal-delete-contrato')
+                        
                         @endforeach
                         
                     </tbody>
@@ -78,7 +84,7 @@
 <div class="modal fade" id="modal-create-contrato">
     <div class="modal-dialog">
         <div class="modal-content bg-default">
-
+            
             <div class="modal-header">
                 <h4 class="modal-title">Crear Contrato</h4>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -90,20 +96,18 @@
             {{ csrf_field() }}
                 <div class="modal-body">
                     <div class="form-group">
-                        <label for="faltas">Faltas</label>
-                        <input type="text" name="faltas" class="form-control" id="faltas" >
                         <label for="fecha_inicio">Fecha inicio</label>
-                        
+                        <input type="date" name="fecha_inicio" class="form-control" id="fecha_inicio"  >
                         <label for="fecha_fin">Fecha fin</label>
-                        <input type="text" name="fecha_fin" class="form-control" id="fecha_fin" >
-                        <label for="incentivo">Incentivo</label>
-                        <input type="text" name="incentivo" class="form-control" id="incentivo" >
+                        <input type="date" name="fecha_fin" class="form-control" id="fecha_fin" >
+                        <label for="incentivo">Incentivo</label><br>
+                        <input type="checkbox" class="form-control" id="incentivo" name="incentivo">
                         <label for="monto_incentivo">Monto incentivo</label>
                         <input type="text" name="monto_incentivo" class="form-control" id="monto_incentivo" >
                         <label for="sueldo">Sueldo</label>
                         <input type="text" name="sueldo" class="form-control" id="sueldo" >
                         <label for="viatico">Viatico</label>
-                        <input type="text" name="viatico" class="form-control" id="viatico" >
+                        <input type="checkbox" class="form-control" id="viatico" name="viatico">
                         <label for="cod_canero">Cañero</label>
                         <div class="dropdown">
                             <select name='cod_canero' id='cod_canero' class="form-control">
@@ -124,7 +128,6 @@
                         </div>
                     </div>
                 </div>
-                
 
                 <div class="modal-footer justify-content-between">
                     <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Cerrar</button>
@@ -136,6 +139,7 @@
       <!-- /.modal-content -->
     </div>
     <!-- /.modal-dialog -->
+    
 </div>
 <!-- /.modal -->
 
@@ -144,6 +148,8 @@
 @section('css')
     <link rel="stylesheet" href="/css/admin_custom.css">
 @stop
+
+
 
 @section('js')
 <script>

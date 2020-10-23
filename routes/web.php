@@ -48,3 +48,4 @@ Route::resource('lote', LoteController::class);
 Route::resource('vehiculo', VehiculoController::class);
 Route::resource('chata', ChataController::class);
 Route::resource('contrato', ContratoController::class);
+Route::put('contrato/faltas/{id}', [ContratoController::class, 'faltas']);

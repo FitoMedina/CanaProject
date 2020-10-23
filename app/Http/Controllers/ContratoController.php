@@ -23,7 +23,7 @@ class ContratoController extends Controller
         $contrato = DB::table('contrato')
         ->join('trabajadores', 'contrato.cod_trabajador', '=', 'trabajadores.codigo')
         ->join('canero', 'contrato.cod_canero', '=', 'canero.cod_canero')
-        ->select('contrato.*','canero.nombre as canero','trabajadores.nombre as trabajador')
+        ->selectRaw('contrato.*, canero.nombre as canero, trabajadores.nombre as trabajador, IF(contrato.incentivo = "1", "Si", "No") as incentivob, IF(contrato.viatico = "1", "Si", "No") as viaticob')
         ->where('contrato.indicador', '=', 'A')
         ->where('canero.indicador', '=', 'A')
         ->where('trabajadores.indicador', '=', 'A')
@@ -72,9 +72,20 @@ class ContratoController extends Controller
         $codigo = $contrato->codigo + 10;
         }
 
+        if($request->incentivo=="on"){
+            $request->incentivo= 1;
+        }else{
+            $request->incentivo= 0;
+        }
+        if($request->viatico=="on"){
+            $request->viatico= 1;
+        }else{
+            $request->viatico= 0;
+        }
+
         $contrato = new Contrato();
         $contrato->codigo = $codigo;
-        $contrato->faltas = $request->faltas;
+        $contrato->faltas = 0;
         $contrato->fecha_inicio = $request->fecha_inicio;
         $contrato->fecha_fin = $request->fecha_fin;
         $contrato->incentivo = $request->incentivo;
@@ -126,6 +137,18 @@ class ContratoController extends Controller
         $contrato1->indicador = 'D';
         $contrato1->save();
 
+        if($request->incentivo=="on"){
+            $request->incentivo= 1;
+        }else{
+            $request->incentivo= 0;
+        }
+        if($request->viatico=="on"){
+            $request->viatico= 1;
+        }else{
+            $request->viatico= 0;
+        }
+
+
         $contrato = new Contrato();
         $contrato->codigo = $contrato1->codigo;
         $contrato->faltas = $request->faltas;
@@ -159,4 +182,30 @@ class ContratoController extends Controller
 
         return redirect()->back();
     }
+
+    public function faltas(Request $request, $id)
+    {
+        $contrato1 = Contrato::find($id);
+        $contrato1->fecha_hasta = date('Y-m-d H:i:s');
+        $contrato1->indicador = 'D';
+        $contrato1->save();
+
+        $contrato = new Contrato();
+        $contrato->codigo = $contrato1->codigo;
+        $contrato->faltas = $request->faltas;
+        $contrato->fecha_inicio = $contrato1->fecha_inicio;
+        $contrato->fecha_fin = $contrato1->fecha_fin;
+        $contrato->incentivo = $contrato1->incentivo;
+        $contrato->monto_incentivo = $contrato1->monto_incentivo;
+        $contrato->sueldo = $contrato1->sueldo;
+        $contrato->viatico = $contrato1->viatico;
+        $contrato->cod_trabajador = $contrato1->cod_trabajador;
+        $contrato->cod_canero = $contrato1->cod_canero;
+        $contrato->fecha_proceso = date('Y-m-d H:i:s');
+        $contrato->fecha_hasta = '2050-01-01';
+        $contrato->indicador =  'A';
+        $contrato->save();
+        return redirect()->back();
+    }
+
 }
