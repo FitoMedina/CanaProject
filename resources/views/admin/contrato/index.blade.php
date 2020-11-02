@@ -7,9 +7,10 @@
 
 <h1>
     Contrato
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-create-contrato">
+    <button type="button" class="create-modal btn btn-primary" data-toggle="modal" data-target="#modal-create-contrato">
         Crear
     </button>
+<a href="{{route('contratoPDF')}}">Imprimir</a>
 </h1>
 @stop
 
@@ -57,11 +58,13 @@
                             <td>{{$contratos->canero}}</td>
                             <td>{{$contratos->fecha_proceso}}</td>
                             <td>
+                                <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modal-create-pago-{{$contratos->id}}">Pagar</button>
                                 <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modal-faltas-contrato-{{$contratos->id}}">Faltas</button>
                                 <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#modal-update-contrato-{{$contratos->id}}">Editar</button>
                                 <button type="button" class="btn btn-danger"  data-toggle="modal" data-target="#modal-delete-contrato-{{$contratos->id}}">Eliminar</button>
                             </td>
                         </tr>
+                        @include('admin.contrato.modal-create-pago')
                         @include('admin.contrato.modal-faltas-contrato')
                         @include('admin.contrato.modal-update-contrato')
                         @include('admin.contrato.modal-delete-contrato')
@@ -131,7 +134,7 @@
 
                 <div class="modal-footer justify-content-between">
                     <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Cerrar</button>
-                    <button type="submit" class="btn btn-outline-primary">Guardar</button>
+                    <button type="submit" class="add btn btn-outline-primary">Guardar</button>
                 </div>
             </form>
             
@@ -152,6 +155,7 @@
 
 
 @section('js')
+
 <script>
 $(document).ready(function() {
     $('#contratos').DataTable( {
@@ -178,6 +182,7 @@ $(document).ready(function() {
     }
      );
 } );
+
 </script>
 @stop
 

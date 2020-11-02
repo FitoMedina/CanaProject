@@ -101,12 +101,12 @@ return [
     |
     */
 
-    'classes_auth_card' => 'card-outline card-primary',
+    'classes_auth_card' => 'bg-gradient-dark',
     'classes_auth_header' => '',
-    'classes_auth_body' => '',
-    'classes_auth_footer' => '',
-    'classes_auth_icon' => '',
-    'classes_auth_btn' => 'btn-flat btn-primary',
+    'classes_auth_body' => 'bg-gradient-dark',
+    'classes_auth_footer' => 'd-none',
+    'classes_auth_icon' => 'text-light',
+    'classes_auth_btn' => 'btn-flat btn-light',
 
     /*
     |--------------------------------------------------------------------------
@@ -126,7 +126,7 @@ return [
     'classes_content_wrapper' => '',
     'classes_content_header' => '',
     'classes_content' => '',
-    'classes_sidebar' => 'sidebar-dark-primary elevation-4',
+    'classes_sidebar' => 'sidebar-dark-secundary elevation-4',
     'classes_sidebar_nav' => '',
     'classes_topnav' => 'navbar-white navbar-light',
     'classes_topnav_nav' => 'navbar-expand',
@@ -241,97 +241,87 @@ return [
             'url'  => 'admin/blog',
             'can'  => 'manage-blog',
         ],
-        ['header' => 'Menu'],
         [
-            'text' => 'Cañeros',
-            'url'  => 'canero',
-            'icon' => 'fas fa-fw fa-user',
-        ],
-        [
-            'text' => 'Cargos',
-            'url'  => 'cargo',
-            'icon' => 'fas fa-fw fa-user-tag',
-        ],
-        [
-            'text' => 'Trabajadores',
-            'url'  => 'trabajador',
-            'icon' => 'fas fa-fw fa-user-tie',
-        ],
-        [
-            'text' => 'Cortes',
-            'url'  => 'corte',
-            'icon' => 'fas fa-fw fa-cut',
-        ],
-        [
-            'text' => 'Tipos de Caña',
-            'url'  => 'tipo',
-            'icon' => 'fas fa-fw fa-seedling',
-        ],
-        [
-            'text' => 'Propiedades',
-            'url'  => 'propiedad',
-            'icon' => 'fas fa-fw fa-home',
-        ],
-        [
-            'text' => 'Lotes',
-            'url'  => 'lote',
-            'icon' => 'fas fa-fw fa-warehouse',
-        ],
-        [
-            'text' => 'Vehiculos',
-            'url'  => 'vehiculo',
-            'icon' => 'fas fa-fw fa-truck-pickup',
-        ],
-        [
-            'text' => 'Chatas',
-            'url'  => 'chata',
-            'icon' => 'fas fa-fw fa-trailer',
-        ],
-        [
-            'text' => 'Contratos',
-            'url'  => 'contrato',
-            'icon' => 'fas fa-fw fa-file-contract',
-        ],
-        [
-            'text' => 'change_password',
-            'url'  => 'admin/settings',
-            'icon' => 'fas fa-fw fa-lock',
-        ],
-        [
-            'text'    => 'multilevel',
-            'icon'    => 'fas fa-fw fa-share',
+            'text'    => 'PERSONAL',
+            'icon'    => 'fas fa-fw fa-user',
             'submenu' => [
                 [
-                    'text' => 'level_one',
-                    'url'  => '#',
+                    'text' => 'Cañeros',
+                    'url'  => 'canero',
+                    'icon' => 'fas fa-fw fa-user',
                 ],
                 [
-                    'text'    => 'level_one',
-                    'url'     => '#',
-                    'submenu' => [
-                        [
-                            'text' => 'level_two',
-                            'url'  => '#',
-                        ],
-                        [
-                            'text'    => 'level_two',
-                            'url'     => '#',
-                            'submenu' => [
-                                [
-                                    'text' => 'level_three',
-                                    'url'  => '#',
-                                ],
-                                [
-                                    'text' => 'level_three',
-                                    'url'  => '#',
-                                ],
-                            ],
-                        ],
-                    ],
+                    'text' => 'Trabajadores',
+                    'url'  => 'trabajador',
+                    'icon' => 'fas fa-fw fa-user-tie',
                 ],
                 [
-                    'text' => 'level_one',
-                    'url'  => '#',
+                    'text' => 'Cargos',
+                    'url'  => 'cargo',
+                    'icon' => 'fas fa-fw fa-user-tag',
+                ],
+            ],
+        ],
+        [
+            'text'    => 'CAÑA',
+            'icon'    => 'fas fa-fw fa-user',
+            'submenu' => [
+                [
+                    'text' => 'Propiedades',
+                    'url'  => 'propiedad',
+                    'icon' => 'fas fa-fw fa-home',
+                ],
+                [
+                    'text' => 'Lotes',
+                    'url'  => 'lote',
+                    'icon' => 'fas fa-fw fa-warehouse',
+                ],
+                [
+                    'text' => 'Cortes',
+                    'url'  => 'corte',
+                    'icon' => 'fas fa-fw fa-cut',
+                ],
+                [
+                    'text' => 'Tipos de Caña',
+                    'url'  => 'tipo',
+                    'icon' => 'fas fa-fw fa-seedling',
+                ],
+            ],
+        ],
+        [
+            'text'    => 'VEHICULOS',
+            'icon'    => 'fas fa-fw fa-truck-pickup',
+            'submenu' => [
+                [
+                    'text' => 'Vehiculos',
+                    'url'  => 'vehiculo',
+                    'icon' => 'fas fa-fw fa-truck-pickup',
+                ],
+                [
+                    'text' => 'Chatas',
+                    'url'  => 'chata',
+                    'icon' => 'fas fa-fw fa-trailer',
+                ],
+            ],
+        ],
+        [
+            'text'    => 'CONTRATOS',
+            'icon'    => 'fas fa-fw fa-file-contract',
+            'submenu' => [
+                [
+                    'text' => 'Contratos',
+                    'url'  => 'contrato',
+                    'icon' => 'fas fa-fw fa-file-contract',
+                ],
+                [
+                    'text' => 'Pagos',
+                    'url'  => 'pago',
+                    'icon' => 'fas fa-fw fa-credit-card',
+                ],
+                [
+                    'text' => 'Entregas',
+                    'url'  => 'entrega',
+                    'icon' => 'fas fa-fw fa-calendar-check',
                 ],
             ],
         ],

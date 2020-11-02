@@ -13,6 +13,10 @@ use App\Http\Controllers\LoteController;
 use App\Http\Controllers\VehiculoController;
 use App\Http\Controllers\ChataController;
 use App\Http\Controllers\ContratoController;
+use App\Http\Controllers\EntregaController;
+use App\Http\Controllers\PagoController;
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\PDFController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,9 +29,11 @@ use App\Http\Controllers\ContratoController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [LoginController::class, 'showLoginForm']);
+
+//Route::get('/', function () {
+//    return view('welcome');
+//});
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('home');
@@ -49,3 +55,6 @@ Route::resource('vehiculo', VehiculoController::class);
 Route::resource('chata', ChataController::class);
 Route::resource('contrato', ContratoController::class);
 Route::put('contrato/faltas/{id}', [ContratoController::class, 'faltas']);
+Route::resource('entrega', EntregaController::class);
+Route::resource('pago', PagoController::class);
+Route::get('/pdf', [PDFController::class, 'contratoPDF'])->name('contratoPDF');

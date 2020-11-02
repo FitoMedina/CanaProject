@@ -4,52 +4,56 @@
 @section('title', 'Cana')
 
 @section('content_header')
+
 <h1>
-    Trabajadores
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-create-trabajador">
+    Pagos
+    <button type="button" class="create-modal btn btn-primary" data-toggle="modal" data-target="#modal-create-pago">
         Crear
     </button>
 </h1>
 @stop
 
+
 @section('content')
+
 <div class="container-fluid">
     <div class="row">
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title">Listado de trabajadores</h3>
+                    <h3 class="card-title">Listado de pagos</h3>
                 </div>
             <!-- /.card-header -->
             <div class="card-body">
-                <table id="trabajadores" class="table table-bordered table-striped">
+                <table id="pagos" class="table table-bordered table-striped">
                     <thead>
                         <tr>
                             <th>Codigo</th>
-                            <th>Nombre</th>
-                            <th>Identificacion</th>
-                            <th>Telefono</th>
-                            <th>Cargo</th>
+                            <th>Fecha</th>
+                            <th>Monto</th>
+                            <th>Tipo</th>
+                            <th>Contrato</th>
                             <th>Creado</th>
                             <th>Acciones</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($trabajador as $trabajadores)
+                        @foreach ($pago as $pagos)
                         <tr>
-                            <td>{{$trabajadores->codigo}}</td>
-                            <td>{{$trabajadores->nombre}}</td>
-                            <td>{{$trabajadores->identificacion}}</td>
-                            <td>{{$trabajadores->telefono}}</td>
-                            <td>{{$trabajadores->cargo}}</td>
-                            <td>{{$trabajadores->fecha_proceso}}</td>
+                            <td>{{$pagos->codigo}}</td>
+                            <td>{{$pagos->fecha}}</td>
+                            <td>{{$pagos->monto}}</td>
+                            <td>{{$pagos->tipo}}</td>
+                            <td>{{$pagos->cod_contrato}}</td>
+                            <td>{{$pagos->fecha_proceso}}</td>
                             <td>
-                                <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#modal-update-trabajador-{{$trabajadores->id}}">Editar</button>
-                                <button type="button" class="btn btn-danger"  data-toggle="modal" data-target="#modal-delete-trabajador-{{$trabajadores->id}}">Eliminar</button>
+                                <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#modal-update-pago-{{$pagos->id}}">Editar</button>
+                                <button type="button" class="btn btn-danger"  data-toggle="modal" data-target="#modal-delete-pago-{{$pagos->id}}">Eliminar</button>
                             </td>
                         </tr>
-                        @include('admin.trabajador.modal-update-trabajador')
-                        @include('admin.trabajador.modal-delete-trabajador')
+                        @include('admin.pago.modal-update-pago')
+                        @include('admin.pago.modal-delete-pago')
+                        
                         @endforeach
                         
                     </tbody>
@@ -65,33 +69,38 @@
 </div>
 
 <!-- modal -->
-<div class="modal fade" id="modal-create-trabajador">
+<div class="modal fade" id="modal-create-pago">
     <div class="modal-dialog">
         <div class="modal-content bg-default">
-
+            
             <div class="modal-header">
-                <h4 class="modal-title">Crear Trabajador</h4>
+                <h4 class="modal-title">Realizar Pago</h4>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span></button>
             </div>
 
-            <form action="/trabajador" method="POST">
+            <form action="/pago" method="POST">
             
             {{ csrf_field() }}
                 <div class="modal-body">
                     <div class="form-group">
-                        <label for="nombre">Nombre</label>
-                        <input type="text" name="nombre" class="form-control" id="nombre" >
-                        <label for="identificacion">Identificacion</label>
-                        <input type="text" name="identificacion" class="form-control" id="identificacion">
-                        <label for="telefono">Telefono</label>
-                        <input type="text" name="telefono" class="form-control" id="telefono" >
-                        <label for="cod_cargo">Cargo</label>
+                        <label for="fecha">Fecha</label>
+                        <input type="date" name="fecha" class="form-control" id="fecha"  >
+                        <label for="monto">Monto</label>
+                        <input type="text" name="monto" class="form-control" id="monto" >
+                        <label for="tipo">Tipo</label><br>
                         <div class="dropdown">
-                            <select name='cod_cargo' id='cod_cargo' class="form-control">
-                                <option value=''>Seleccionar</option>
-                                @foreach ($cargo as $cargos)
-                                <option value="{{ $cargos->codigo }}">"{{ $cargos->nombre }}"</option>
+                            <select name='tipo' id='tipo' class="form-control">
+                                <option value='1'>Racion</option>
+                                <option value='2'>A cuenta</option>
+                            </select>
+                        </div>
+                        <label for="cod_contrato">Contrato</label>
+                        <div class="dropdown">
+                            <select name='cod_contrato' id='cod_contrato' class="form-control">
+                                <option value='0'>Seleccionar</option>
+                                @foreach ($contrato as $contratos)
+                                <option value="{{ $contratos->codigo }}">"{{ $contratos->codigo }}"</option>
                                 @endforeach
                             </select>
                         </div>
@@ -100,7 +109,7 @@
 
                 <div class="modal-footer justify-content-between">
                     <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Cerrar</button>
-                    <button type="submit" class="btn btn-outline-primary">Guardar</button>
+                    <button type="submit" class="add btn btn-outline-primary">Guardar</button>
                 </div>
             </form>
             
@@ -108,6 +117,7 @@
       <!-- /.modal-content -->
     </div>
     <!-- /.modal-dialog -->
+    
 </div>
 <!-- /.modal -->
 
@@ -117,10 +127,13 @@
     <link rel="stylesheet" href="/css/admin_custom.css">
 @stop
 
+
+
 @section('js')
+
 <script>
 $(document).ready(function() {
-    $('#trabajadores').DataTable( {
+    $('#pagos').DataTable( {
         "order": [[ 3, "desc" ]],
         "language": {
             "lengthMenu": "Mostrar " +
@@ -144,6 +157,7 @@ $(document).ready(function() {
     }
      );
 } );
+
 </script>
 @stop
 

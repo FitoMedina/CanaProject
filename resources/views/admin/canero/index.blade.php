@@ -82,14 +82,14 @@
                     <div class="form-group">
                         <label for="cod_canero">Codigo</label>
                         <input type="text" name="cod_canero" class="form-control" id="cod_canero" >
+                        <label for="nombre">Nombre</label>
+                        <input type="text" name="nombre" class="form-control" id="nombre">
                         {!! $errors->first('cod_canero','<small>:message</small>') !!}
                         <label for="direccion">Direccion</label>
                         <input type="text" name="direccion" class="form-control" id="direccion">
                         {!! $errors->first('direccion','<small>:message</small>') !!}
                         <label for="identificacion">Identificacion</label>
                         <input type="text" name="identificacion" class="form-control" id="identificacion">
-                        <label for="nombre">Nombre</label>
-                        <input type="text" name="nombre" class="form-control" id="nombre">
                         <label for="telefono">Telefono</label>
                         <input type="text" name="telefono" class="form-control" id="telefono">
                     </div>

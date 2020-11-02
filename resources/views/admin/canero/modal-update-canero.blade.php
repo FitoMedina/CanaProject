@@ -16,12 +16,12 @@
                     <div class="form-group">
                         <label for="cod_canero">Codigo</label>
                         <input type="text" name="cod_canero" class="form-control" id="cod_canero" value="{{$caneros->cod_canero}}">
+                        <label for="nombre">Nombre</label>
+                        <input type="text" name="nombre" class="form-control" id="nombre" value="{{$caneros->nombre}}">
                         <label for="direccion">Direccion</label>
                         <input type="text" name="direccion" class="form-control" id="direccion" value="{{$caneros->direccion}}">
                         <label for="identificacion">Identificacion</label>
                         <input type="text" name="identificacion" class="form-control" id="identificacion" value="{{$caneros->identificacion}}">
-                        <label for="nombre">Nombre</label>
-                        <input type="text" name="nombre" class="form-control" id="nombre" value="{{$caneros->nombre}}">
                         <label for="telefono">Telefono</label>
                         <input type="text" name="telefono" class="form-control" id="telefono" value="{{$caneros->telefono}}">
                     </div>
