@@ -49,16 +49,20 @@ class CaneroController extends Controller
      */
     public function store(Request $request)
     {
-        $validator = Validator::make($request->all(), [
+        //$validator = Validator::make($request->all(), [
+        //   'cod_canero' => ['required', 'max:255'],
+        //    'direccion' => ['required', 'max:255'],
+        //]);
+
+        request()->validate([
             'cod_canero' => ['required', 'max:255'],
-            'direccion' => ['required', 'max:255'],
         ]);
 
-        if ($validator->fails()) {
-            //
-        }
-        else
-        {
+        //if ($validator->fails()) {
+        //    return view('admin\canero\index');
+        //}
+        //else
+        //{
         $canero = new Canero();
         $canero->cod_canero = $request->cod_canero;
         $canero->direccion = $request->direccion;
@@ -70,7 +74,7 @@ class CaneroController extends Controller
         $canero->indicador =  'A';
         $canero->save();
         return redirect()->back();
-        }
+        //}
     }
 
     /**

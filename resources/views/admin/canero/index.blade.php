@@ -75,7 +75,7 @@
                     <span aria-hidden="true">&times;</span></button>
             </div>
 
-            <form action="/canero" method="POST">
+            <form id="createform">
             
             {{ csrf_field() }}
                 <div class="modal-body">
@@ -139,8 +139,26 @@ $(document).ready(function() {
             }
         }
     }
-     );
+    );
+    $('#createform').on('submit',function(e){
+        console.log("OK1");
+        e.preventDefault();
+
+        $.ajax({
+            type:"POST",
+            url:"/canero",
+            data: $("#createform").serialize(),
+            success:function (response) {
+                console.log(response)
+                $('#modal-create-canero').modal('hide')
+                alert("Datos guardados");
+            },
+            error: function(error){
+                console.log(error)
+                alert("Datos no guardados");
+            }
+        })
+    });
 } );
 </script>
 @stop
-

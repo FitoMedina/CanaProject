@@ -18,7 +18,7 @@
                         <input type="text" name="nombre" class="form-control" id="nombre" value="{{$propiedades->nombre}}">
                         <label for="hectareas">Hectareas</label>
                         <input type="text" name="hectareas" class="form-control" id="hectareas" value="{{$propiedades->hectareas}}">
-                        <label for="ubicacion">Ubicacion</label>
+                        <label for="ubicacion">Distancia</label>
                         <input type="text" name="ubicacion" class="form-control" id="ubicacion" value="{{$propiedades->ubicacion}}">
                         <label for="cod_canero">Cañero</label>
                         <div class="dropdown">
