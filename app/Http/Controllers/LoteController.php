@@ -59,6 +59,10 @@ class LoteController extends Controller
         $codigo = $lote->codigo + 10;
         }
 
+        request()->validate([
+            'distancia' => ['required', 'max:99999999999', 'integer'],
+        ]);
+
         $lote = new Lote();
         $lote->codigo = $codigo;
         $lote->distancia = $request->distancia;
@@ -102,6 +106,9 @@ class LoteController extends Controller
      */
     public function update(Request $request, $id)
     {
+        request()->validate([
+            'distancia' => ['required', 'max:99999999999', 'integer'],
+        ]);
         $lote1 = Lote::find($id);
         $lote1->fecha_hasta = date('Y-m-d H:i:s');
         $lote1->indicador = 'D';

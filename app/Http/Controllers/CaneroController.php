@@ -53,16 +53,19 @@ class CaneroController extends Controller
         //   'cod_canero' => ['required', 'max:255'],
         //    'direccion' => ['required', 'max:255'],
         //]);
-
         request()->validate([
-            'cod_canero' => ['required', 'max:255'],
+            'cod_canero' => ['required', 'max:99999999999', 'integer'],
+            'direccion' => ['required', 'max:255'],
+            'identificacion' => ['required', 'max:255'],
+            'nombre' => ['required', 'max:255'],
+            'telefono' => ['required', 'max:99999999999', 'integer'],
         ]);
-
         //if ($validator->fails()) {
         //    return view('admin\canero\index');
         //}
         //else
         //{
+        try{
         $canero = new Canero();
         $canero->cod_canero = $request->cod_canero;
         $canero->direccion = $request->direccion;
@@ -74,7 +77,10 @@ class CaneroController extends Controller
         $canero->indicador =  'A';
         $canero->save();
         return redirect()->back();
-        //}
+        }
+        catch(\Illuminate\Database\QueryException $e){
+            return back()->withErrors(['message'=>'ERROR! Por favor revisar los datos']);
+        }
     }
 
     /**
@@ -108,6 +114,14 @@ class CaneroController extends Controller
      */
     public function update(Request $request, $id)
     {
+        request()->validate([
+            'cod_canero' => ['required', 'max:99999999999', 'integer'],
+            'direccion' => ['required', 'max:255'],
+            'identificacion' => ['required', 'max:255'],
+            'nombre' => ['required', 'max:255'],
+            'telefono' => ['required', 'max:99999999999', 'integer'],
+        ]);
+
         $canero = Canero::find($id);
         $canero->fecha_hasta = date('Y-m-d H:i:s');
         $canero->indicador = 'D';

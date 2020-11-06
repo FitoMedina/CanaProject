@@ -58,6 +58,10 @@ class TipocanaController extends Controller
         $codigo = $tipo->codigo + 10;
         }
         
+        request()->validate([
+            'descripcion' => ['required', 'max:255'],
+        ]);
+
         $tipo = new Tipocana();
         $tipo->codigo = $codigo;
         $tipo->descripcion = $request->descripcion;
@@ -99,6 +103,10 @@ class TipocanaController extends Controller
      */
     public function update(Request $request, $id)
     {
+        request()->validate([
+            'descripcion' => ['required', 'max:255'],
+        ]);
+        
         $tipo1 = Tipocana::find($id);
         $tipo1->fecha_hasta = date('Y-m-d H:i:s');
         $tipo1->indicador = 'D';

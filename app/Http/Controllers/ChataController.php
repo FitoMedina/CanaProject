@@ -66,6 +66,14 @@ class ChataController extends Controller
         $codigo = $chata->codigo + 10;
         }
 
+        request()->validate([
+            'eje' => ['required', 'max:255'],
+            'reten' => ['required', 'max:255'],
+            'rueda' => ['required', 'max:99999999999', 'integer'],
+            'rodamiento' => ['required', 'max:255'],
+            'tara' => ['required', 'max:255'],
+        ]);
+
         $chata = new Chata();
         $chata->codigo = $codigo;
         $chata->eje = $request->eje;
@@ -112,6 +120,14 @@ class ChataController extends Controller
      */
     public function update(Request $request, $id)
     {
+        request()->validate([
+            'eje' => ['required', 'max:255'],
+            'reten' => ['required', 'max:255'],
+            'rueda' => ['required', 'max:99999999999', 'integer'],
+            'rodamiento' => ['required', 'max:255'],
+            'tara' => ['required', 'max:255'],
+        ]);
+        
         $chata1 = Chata::find($id);
         $chata1->fecha_hasta = date('Y-m-d H:i:s');
         $chata1->indicador = 'D';

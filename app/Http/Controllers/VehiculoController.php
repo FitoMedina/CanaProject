@@ -64,6 +64,13 @@ class VehiculoController extends Controller
         }else{
         $codigo = $vehiculo->codigo + 10;
         }
+        request()->validate([
+            'color' => ['required', 'max:255'],
+            'marca' => ['required', 'max:255'],
+            'modelo' => ['required', 'max:99999999999', 'integer'],
+            'placa' => ['required', 'max:255'],
+            'tipo' => ['required', 'max:255'],
+        ]);
 
         $vehiculo = new Vehiculo();
         $vehiculo->codigo = $codigo;
@@ -111,6 +118,14 @@ class VehiculoController extends Controller
      */
     public function update(Request $request, $id)
     {
+        request()->validate([
+            'color' => ['required', 'max:255'],
+            'marca' => ['required', 'max:255'],
+            'modelo' => ['required', 'max:99999999999', 'integer'],
+            'placa' => ['required', 'max:255'],
+            'tipo' => ['required', 'max:255'],
+        ]);
+        
         $vehiculo1 = Vehiculo::find($id);
         $vehiculo1->fecha_hasta = date('Y-m-d H:i:s');
         $vehiculo1->indicador = 'D';

@@ -57,7 +57,11 @@ class CorteController extends Controller
         }else{
         $codigo = $corte->codigo + 10;
         }
-        
+
+        request()->validate([
+            'descripcion' => ['required', 'max:255'],
+        ]);
+
         $corte = new Corte();
         $corte->codigo = $codigo;
         $corte->descripcion = $request->descripcion;
@@ -99,6 +103,9 @@ class CorteController extends Controller
      */
     public function update(Request $request, $id)
     {
+        request()->validate([
+            'descripcion' => ['required', 'max:255'],
+        ]);
         $corte1 = Corte::find($id);
         $corte1->fecha_hasta = date('Y-m-d H:i:s');
         $corte1->indicador = 'D';

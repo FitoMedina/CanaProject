@@ -65,6 +65,12 @@ class PropiedadController extends Controller
         $codigo = $propiedad->codigo + 10;
         }
 
+        request()->validate([
+            'ubicacion' => ['required', 'max:99999999999', 'integer'],
+            'nombre' => ['required', 'max:255'],
+            'hectareas' => ['required', 'max:99999999999', 'integer'],
+        ]);
+
         $propiedad = new Propiedad();
         $propiedad->codigo = $codigo;
         $propiedad->hectareas = $request->hectareas;
@@ -109,6 +115,12 @@ class PropiedadController extends Controller
      */
     public function update(Request $request, $id)
     {
+        request()->validate([
+            'ubicacion' => ['required', 'max:255', 'integer'],
+            'nombre' => ['required', 'max:255'],
+            'hectareas' => ['required', 'max:99999999999', 'integer'],
+        ]);
+
         $propiedad1 = Propiedad::find($id);
         $propiedad1->fecha_hasta = date('Y-m-d H:i:s');
         $propiedad1->indicador = 'D';

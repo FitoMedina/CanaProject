@@ -60,6 +60,11 @@ class CargoController extends Controller
         $codigo = $cargo->codigo + 10;
         }
         
+        request()->validate([
+            'nombre' => ['required', 'max:255'. 'alpha'],
+            'sueldo' => ['required', 'max:99999999999', 'numeric'],
+        ]);
+
         $cargo = new Cargo();
         $cargo->codigo = $codigo;
         $cargo->nombre = $request->nombre;
@@ -103,6 +108,11 @@ class CargoController extends Controller
      */
     public function update(Request $request, $id)
     {
+        request()->validate([
+            'nombre' => ['required', 'max:255'. 'alpha'],
+            'sueldo' => ['required', 'max:99999999999', 'numeric'],
+        ]);
+        
         $cargo1 = Cargo::find($id);
         $cargo1->fecha_hasta = date('Y-m-d H:i:s');
         $cargo1->indicador = 'D';

@@ -59,6 +59,12 @@ class PagoController extends Controller
         $codigo = $pago->codigo + 10;
         }
 
+        request()->validate([
+            'fecha' => ['required', 'max:255'],
+            'tipo' => ['required', 'max:255'],
+            'monto' => ['required', 'max:99999999999', 'integer'],
+        ]);
+
         $pago = new Pago();
         $pago->codigo = $codigo;
         $pago->fecha = $request->fecha;
@@ -103,6 +109,12 @@ class PagoController extends Controller
      */
     public function update(Request $request, $id)
     {
+        request()->validate([
+            'fecha' => ['required', 'max:255'],
+            'tipo' => ['required', 'max:255'],
+            'monto' => ['required', 'max:99999999999', 'integer'],
+        ]);
+        
         $pago1 = Pago::find($id);
         $pago1->fecha_hasta = date('Y-m-d H:i:s');
         $pago1->indicador = 'D';

@@ -101,6 +101,19 @@ class EntregaController extends Controller
         $codigo = $entrega->codigo + 10;
         }
 
+        request()->validate([
+            'fecha_entrega' => ['required', 'max:255'],
+            'paquete' => ['required', 'max:255'],
+            'peso_neto' => ['required', 'max:99999999999', 'integer'],
+            'peso_neto' => ['required', 'max:255'],
+            'cod_corte' => ['required', 'max:255'],
+            'cod_tipo' => ['required', 'max:255'],
+            'cod_chata' => ['required', 'max:255'],
+            'cod_camion' => ['required', 'max:255'],
+            'cod_trabajador' => ['required', 'max:255'],
+            'cod_canero' => ['required', 'max:255'],
+        ]);
+
 
         $entrega = new Entrega();
         $entrega->codigo = $codigo;
@@ -151,6 +164,19 @@ class EntregaController extends Controller
      */
     public function update(Request $request, $id)
     {
+        request()->validate([
+            'fecha_entrega' => ['required', 'max:255'],
+            'paquete' => ['required', 'max:255'],
+            'peso_neto' => ['required', 'max:99999999999', 'integer'],
+            'peso_neto' => ['required', 'max:255'],
+            'cod_corte' => ['required', 'max:255'],
+            'cod_tipo' => ['required', 'max:255'],
+            'cod_chata' => ['required', 'max:255'],
+            'cod_camion' => ['required', 'max:255'],
+            'cod_trabajador' => ['required', 'max:255'],
+            'cod_canero' => ['required', 'max:255'],
+        ]);
+        
         $entrega1 = Entrega::find($id);
         $entrega1->fecha_hasta = date('Y-m-d H:i:s');
         $entrega1->indicador = 'D';

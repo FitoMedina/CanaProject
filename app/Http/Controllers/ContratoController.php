@@ -72,6 +72,8 @@ class ContratoController extends Controller
         $codigo = $contrato->codigo + 10;
         }
 
+        
+
         if($request->incentivo=="on"){
             $request->incentivo= 1;
         }else{
@@ -82,6 +84,13 @@ class ContratoController extends Controller
         }else{
             $request->viatico= 0;
         }
+
+        request()->validate([
+            'fecha_inicio' => ['required', 'max:255'],
+            'fecha_fin' => ['required', 'max:255'],
+            'monto_incentivo' => ['required', 'max:255'],
+            'sueldo' => ['required', 'max:255'],
+        ]);
 
         $contrato = new Contrato();
         $contrato->codigo = $codigo;
@@ -132,6 +141,14 @@ class ContratoController extends Controller
      */
     public function update(Request $request, $id)
     {
+        request()->validate([
+            'faltas' => ['required', 'max:255', 'integer'],
+            'fecha_inicio' => ['required', 'max:255'],
+            'fecha_fin' => ['required', 'max:255'],
+            'monto_incentivo' => ['required', 'max:255'],
+            'sueldo' => ['required', 'max:255'],
+        ]);
+
         $contrato1 = Contrato::find($id);
         $contrato1->fecha_hasta = date('Y-m-d H:i:s');
         $contrato1->indicador = 'D';
@@ -185,6 +202,10 @@ class ContratoController extends Controller
 
     public function faltas(Request $request, $id)
     {
+        request()->validate([
+            'faltas' => ['required', 'max:255', 'integer'],
+        ]); 
+
         $contrato1 = Contrato::find($id);
         $contrato1->fecha_hasta = date('Y-m-d H:i:s');
         $contrato1->indicador = 'D';

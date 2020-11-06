@@ -66,6 +66,12 @@ class TrabajadorController extends Controller
         $codigo = $trabajador->codigo + 10;
         }
 
+        request()->validate([
+            'identificacion' => ['required', 'max:255'],
+            'nombre' => ['required', 'max:255'],
+            'telefono' => ['required', 'max:99999999999', 'integer'],
+        ]);
+
         $trabajador = new Trabajador();
         $trabajador->codigo = $codigo;
         $trabajador->nombre = $request->nombre;
@@ -110,6 +116,12 @@ class TrabajadorController extends Controller
      */
     public function update(Request $request, $id)
     {
+        request()->validate([
+            'identificacion' => ['required', 'max:255'],
+            'nombre' => ['required', 'max:255'],
+            'telefono' => ['required', 'max:99999999999', 'integer'],
+        ]);
+
         $trabajador1 = Trabajador::find($id);
         $trabajador1->fecha_hasta = date('Y-m-d H:i:s');
         $trabajador1->indicador = 'D';

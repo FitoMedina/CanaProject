@@ -15,7 +15,7 @@
                 <div class="modal-body">
                     <div class="form-group">
                         <label for="cod_canero">Codigo</label>
-                        <input type="text" name="cod_canero" class="form-control" id="cod_canero" value="{{$caneros->cod_canero}}">
+                        <input type="text" name="cod_canero" class="form-control" id="cod_canero" value="{{$caneros->cod_canero}}" readonly="readonly">
                         <label for="nombre">Nombre</label>
                         <input type="text" name="nombre" class="form-control" id="nombre" value="{{$caneros->nombre}}">
                         <label for="direccion">Direccion</label>

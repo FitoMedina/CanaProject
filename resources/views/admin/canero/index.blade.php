@@ -16,6 +16,20 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-12">
+
+            @if($errors->any())
+            <div class="alert alert-danger">
+                ERROR! Por favor revisar los datos.
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">x</span>
+                </button><br>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+                
+            </div>
+            @endif
+
             <div class="card">
                 <div class="card-header">
                     <h3 class="card-title">Listado de cañeros</h3>
@@ -75,7 +89,7 @@
                     <span aria-hidden="true">&times;</span></button>
             </div>
 
-            <form id="createform">
+            <form id="createform" action="/canero" method="POST">
             
             {{ csrf_field() }}
                 <div class="modal-body">
@@ -84,10 +98,10 @@
                         <input type="text" name="cod_canero" class="form-control" id="cod_canero" >
                         <label for="nombre">Nombre</label>
                         <input type="text" name="nombre" class="form-control" id="nombre">
-                        {!! $errors->first('cod_canero','<small>:message</small>') !!}
+                        {{-- {!! $errors->first('cod_canero','<small>:message</small>') !!} --}}
                         <label for="direccion">Direccion</label>
                         <input type="text" name="direccion" class="form-control" id="direccion">
-                        {!! $errors->first('direccion','<small>:message</small>') !!}
+                        {{-- {!! $errors->first('direccion','<small>:message</small>') !!} --}}
                         <label for="identificacion">Identificacion</label>
                         <input type="text" name="identificacion" class="form-control" id="identificacion">
                         <label for="telefono">Telefono</label>
@@ -138,27 +152,25 @@ $(document).ready(function() {
                 'previous': 'Anterior'
             }
         }
-    }
-    );
-    $('#createform').on('submit',function(e){
-        console.log("OK1");
+    });
+/*     $('#createform').on('submit',function(e){
+       console.log("OK1");
         e.preventDefault();
-
         $.ajax({
             type:"POST",
             url:"/canero",
             data: $("#createform").serialize(),
             success:function (response) {
-                console.log(response)
+               console.log(response)
                 $('#modal-create-canero').modal('hide')
                 alert("Datos guardados");
             },
             error: function(error){
                 console.log(error)
-                alert("Datos no guardados");
+                alert("Datos no guardados: " );
             }
         })
-    });
+    }); */
 } );
 </script>
 @stop
