@@ -323,6 +323,11 @@ return [
                     'url'  => 'entrega',
                     'icon' => 'fas fa-fw fa-calendar-check',
                 ],
+                [
+                    'text' => 'Gastos',
+                    'url'  => 'gasto',
+                    'icon' => 'fas fa-fw fa-credit-card',
+                ],
             ],
         ],
     ],

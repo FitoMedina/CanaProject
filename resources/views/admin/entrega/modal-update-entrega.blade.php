@@ -17,7 +17,7 @@
                         <label for="fecha_entrega">Fecha entrega</label>
                         <input type="date" name="fecha_entrega" class="form-control" id="fecha_entrega" value="{{$entregas->fecha_entrega}}">
                         <label for="paquete">Paquete</label>
-                        <input type="text" name="paquete" class="form-control" id="faltas" value="{{$entregas->paquete}}">
+                        <input type="text" name="paquete" class="form-control" id="paquete" value="{{$entregas->paquete}}">
                         <label for="peso_neto">Peso neto</label>
                         <input type="text" name="peso_neto" class="form-control" id="peso_neto" value="{{$entregas->peso_neto}}">
                         <label for="cod_canero">Cañero</label>

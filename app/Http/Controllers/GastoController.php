@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\Gasto;
+use Illuminate\Auth\Access\Gate;
 
 class GastoController extends Controller
 {
@@ -15,15 +16,16 @@ class GastoController extends Controller
      */
     public function index()
     {
-        $contrato = DB::table('gasto')
+        $gasto = DB::table('gasto')
         ->join('canero', 'gasto.cod_canero', '=', 'canero.cod_canero')
         ->join('lote', 'gasto.cod_lote', '=', 'lote.codigo')
-        ->join('vehiculo', 'gasto.cod_vehiculo', '=', 'vehiculo.codigo')
-        ->join('chata', 'gasto.cod_camion', '=', 'chata.codigo')
-        ->selectRaw('gasto.*, canero.nombre as canero, lote.codigo as lote, vehiculo.placa as vehiculo, chata.tara as tara')
-        ->where('contrato.indicador', '=', 'A')
+        ->join('vehiculo', 'gasto.cod_camion', '=', 'vehiculo.codigo')
+        ->join('chata', 'gasto.cod_chata', '=', 'chata.codigo')
+        ->selectRaw('gasto.*, canero.nombre as canero, lote.codigo as lote, vehiculo.placa as vehiculo, chata.tara as tara') 
+        ->where('gasto.indicador', '=', 'A')
         ->where('canero.indicador', '=', 'A')
-        ->where('trabajadores.indicador', '=', 'A')
+        ->where('vehiculo.indicador', '=', 'A')
+        ->where('chata.indicador', '=', 'A')
         ->get();
 
         $canero = DB::table('canero')
@@ -31,22 +33,22 @@ class GastoController extends Controller
         ->where('indicador', '=', 'A')
         ->get();
 
-        $trabajador = DB::table('lote')
+        $lote = DB::table('lote')
         ->select(DB::raw('*'))
         ->where('indicador', '=', 'A')
         ->get();
 
-        $trabajador = DB::table('vehiculo')
+        $vehiculo = DB::table('vehiculo')
         ->select(DB::raw('*'))
         ->where('indicador', '=', 'A')
         ->get();
 
-        $trabajador = DB::table('chata')
+        $chata = DB::table('chata')
         ->select(DB::raw('*'))
         ->where('indicador', '=', 'A')
         ->get();
 
-        return view('admin\gasto\index', compact('contrato','canero','lote','vehiculo','chata'));
+        return view('admin\gasto\index', compact('gasto','canero','lote','vehiculo','chata'));
     }
 
     /**
@@ -125,7 +127,26 @@ class GastoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        
+        $gasto1 = Gasto::find($id);
+        $gasto1->fecha_hasta = date('Y-m-d H:i:s');
+        $gasto1->indicador = 'D';
+        $gasto1->save();
+
+        $gasto = new Gasto();
+        $gasto->codigo = $gasto1->codigo;
+        $gasto->interes = $request->interes;
+        $gasto->monto = $request->monto;
+        $gasto->motivo = $request->motivo;
+        $gasto->cod_camion = $request->cod_camion;
+        $gasto->cod_chata = $request->cod_chata;
+        $gasto->cod_lote = $request->cod_lote;
+        $gasto->cod_canero = $request->cod_canero;
+        $gasto->fecha_proceso = date('Y-m-d H:i:s');
+        $gasto->fecha_hasta = '2050-01-01';
+        $gasto->indicador =  'A';
+        $gasto->save();
+        return redirect()->back();
     }
 
     /**
@@ -136,6 +157,11 @@ class GastoController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $gasto = Gasto::find($id);
+        $gasto->fecha_hasta = date('Y-m-d H:i:s');
+        $gasto->indicador = 'D';
+        $gasto->save();
+
+        return redirect()->back();
     }
 }
