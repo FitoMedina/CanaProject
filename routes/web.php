@@ -18,6 +18,7 @@ use App\Http\Controllers\PagoController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\GastoController;
 use App\Http\Controllers\PDFController;
+use App\Http\Controllers\ReporteController;
 
 /*
 |--------------------------------------------------------------------------
@@ -59,4 +60,7 @@ Route::put('contrato/faltas/{id}', [ContratoController::class, 'faltas']);
 Route::resource('entrega', EntregaController::class);
 Route::resource('pago', PagoController::class);
 Route::resource('gasto', GastoController::class);
+Route::get('/liquidacion', [ReporteController::class, 'liquidacion'])->name('liquidacion');
+Route::get('/liquidaciontotal', [ReporteController::class, 'liquidacionTotal'])->name('liquidacionTotal');
 Route::get('/pdf', [PDFController::class, 'contratoPDF'])->name('contratoPDF');
+Route::post('/pdf/trab', [PDFController::class, 'contratoPDFtrab'])->name('contratoPDFtrab');

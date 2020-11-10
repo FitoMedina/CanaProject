@@ -10,7 +10,11 @@
     <button type="button" class="create-modal btn btn-primary" data-toggle="modal" data-target="#modal-create-contrato">
         Crear
     </button>
-<a href="{{route('contratoPDF')}}">Imprimir</a>
+    <a href="{{route('contratoPDF')}}" target="_blank" >
+        <button  type="button" class="btn btn-primary">
+            Imprimir
+        </button>
+    </a>
 </h1>
 @stop
 
@@ -70,6 +74,11 @@
                             <td>{{$contratos->canero}}</td>
                             <td>{{$contratos->fecha_proceso}}</td>
                             <td>
+                                <form method="POST" action="{{route('contratoPDFtrab')}}" target="_blank">
+                                    {{ csrf_field() }}
+                                    <input type="hidden" name="id" value="{{ $contratos->codigo }}">
+                                    <button type="submit" class="btn btn-primary">Imprimir</button>
+                                </form>
                                 <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modal-create-pago-{{$contratos->id}}">Pagar</button>
                                 <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modal-faltas-contrato-{{$contratos->id}}">Faltas</button>
                                 <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#modal-update-contrato-{{$contratos->id}}">Editar</button>

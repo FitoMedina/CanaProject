@@ -243,7 +243,7 @@ return [
         ],
         [
             'text'    => 'PERSONAL',
-            'icon'    => 'fas fa-fw fa-user',
+            'icon'    => 'fas fa-fw fa-bars',
             'submenu' => [
                 [
                     'text' => 'Cañeros',
@@ -264,7 +264,7 @@ return [
         ],
         [
             'text'    => 'CAÑA',
-            'icon'    => 'fas fa-fw fa-user',
+            'icon'    => 'fas fa-fw fa-bars',
             'submenu' => [
                 [
                     'text' => 'Propiedades',
@@ -290,7 +290,7 @@ return [
         ],
         [
             'text'    => 'VEHICULOS',
-            'icon'    => 'fas fa-fw fa-truck-pickup',
+            'icon'    => 'fas fa-fw fa-bars',
             'submenu' => [
                 [
                     'text' => 'Vehiculos',
@@ -306,7 +306,7 @@ return [
         ],
         [
             'text'    => 'CONTRATOS',
-            'icon'    => 'fas fa-fw fa-file-contract',
+            'icon'    => 'fas fa-fw fa-bars',
             'submenu' => [
                 [
                     'text' => 'Contratos',
@@ -327,6 +327,22 @@ return [
                     'text' => 'Gastos',
                     'url'  => 'gasto',
                     'icon' => 'fas fa-fw fa-credit-card',
+                ],
+            ],
+        ],
+        [
+            'text'    => 'REPORTES',
+            'icon'    => 'fas fa-fw fa-bars',
+            'submenu' => [
+                [
+                    'text' => 'Liquidacion',
+                    'url'  => '/liquidacion',
+                    'icon' => 'fas fa-fw fa-clipboard',
+                ],
+                [
+                    'text' => 'Liquidacion Total',
+                    'url'  => '/liquidaciontotal',
+                    'icon' => 'fas fa-fw fa-clipboard',
                 ],
             ],
         ],

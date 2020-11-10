@@ -55,7 +55,7 @@
                             <td>{{$pagos->codigo}}</td>
                             <td>{{$pagos->fecha}}</td>
                             <td>{{$pagos->monto}}</td>
-                            <td>{{$pagos->tipo}}</td>
+                            <td>{{$pagos->tipo_pago}}</td>
                             <td>{{$pagos->cod_contrato}}</td>
                             <td>{{$pagos->fecha_proceso}}</td>
                             <td>
