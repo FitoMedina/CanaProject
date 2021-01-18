@@ -20,15 +20,7 @@
                         <input type="text" name="hectareas" class="form-control" id="hectareas" value="{{$propiedades->hectareas}}">
                         <label for="ubicacion">Distancia</label>
                         <input type="text" name="ubicacion" class="form-control" id="ubicacion" value="{{$propiedades->ubicacion}}">
-                        <label for="cod_canero">Cañero</label>
-                        <div class="dropdown">
-                            <select name='cod_canero' id='cod_canero' class="form-control">
-                                <option value='{{$propiedades->cod_canero}}'>Seleccionar</option>
-                                @foreach ($canero as $caneros)
-                                <option value="{{ $caneros->cod_canero }}">"{{ $caneros->nombre }}"</option>
-                                @endforeach
-                            </select>
-                        </div>
+                        
                     </div>
                 </div>
 

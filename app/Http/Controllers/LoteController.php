@@ -60,13 +60,17 @@ class LoteController extends Controller
         }
 
         request()->validate([
-            'distancia' => ['required', 'max:99999999999', 'integer'],
+            'variedad' => ['required', 'max:99999999999'],
+            'edad' => ['required', 'max:99999999999'],
+            'descripcion' => ['required', 'max:99999999999'],
         ]);
 
         $lote = new Lote();
         $lote->codigo = $codigo;
-        $lote->distancia = $request->distancia;
+        $lote->descripcion = $request->descripcion;
         $lote->cod_propiedad = $request->cod_propiedad;
+        $lote->variedad = $request->variedad;
+        $lote->edad = $request->edad;
         $lote->fecha_proceso = date('Y-m-d H:i:s');
         $lote->fecha_hasta = '2050-01-01';
         $lote->indicador =  'A';
@@ -107,7 +111,9 @@ class LoteController extends Controller
     public function update(Request $request, $id)
     {
         request()->validate([
-            'distancia' => ['required', 'max:99999999999', 'integer'],
+            'descripcion' => ['required', 'max:99999999999'],
+            'variedad' => ['required', 'max:99999999999'],
+            'edad' => ['required', 'max:99999999999'],
         ]);
         $lote1 = Lote::find($id);
         $lote1->fecha_hasta = date('Y-m-d H:i:s');
@@ -116,8 +122,10 @@ class LoteController extends Controller
 
         $lote = new Lote();
         $lote->codigo = $lote1->codigo;
-        $lote->distancia = $request->distancia;
+        $lote->descripcion = $request->descripcion;
         $lote->cod_propiedad = $request->cod_propiedad;
+        $lote->variedad = $request->variedad;
+        $lote->edad = $request->edad;
         $lote->fecha_proceso = date('Y-m-d H:i:s');
         $lote->fecha_hasta = '2050-01-01';
         $lote->indicador =  'A';

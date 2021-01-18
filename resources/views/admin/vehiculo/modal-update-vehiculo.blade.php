@@ -14,12 +14,8 @@
             {{ csrf_field() }}
                 <div class="modal-body">
                     <div class="form-group">
-                        <label for="color">Color</label>
-                        <input type="text" name="color" class="form-control" id="color" value="{{$vehiculos->color}}">
-                        <label for="marca">Marca</label>
-                        <input type="text" name="marca" class="form-control" id="marca" value="{{$vehiculos->marca}}">
-                        <label for="modelo">Modelo</label>
-                        <input type="text" name="modelo" class="form-control" id="modelo" value="{{$vehiculos->modelo}}">
+                        <label for="tara">Tara</label>
+                        <input type="text" name="tara" class="form-control" id="tara" value="{{$vehiculos->tara}}">
                         <label for="placa">Placa</label>
                         <input type="text" name="placa" class="form-control" id="placa" value="{{$vehiculos->placa}}">
                         <label for="tipo">Tipo</label>

@@ -38,21 +38,12 @@
                                 @endforeach
                             </select>
                         </div>
-                        <label for="cod_camion">Camion</label>
+                        <label for="cod_vehiculo">Vehiculo</label>
                         <div class="dropdown">
-                            <select name='cod_camion' id='cod_camion' class="form-control">
-                                <option value='{{$entregas->cod_camion}}'>Seleccionar</option>
+                            <select name='cod_vehiculo' id='cod_vehiculo' class="form-control">
+                                <option value='{{$entregas->cod_vehiculo}}'>Seleccionar</option>
                                 @foreach ($vehiculo as $vehiculos)
                                 <option value="{{ $vehiculos->codigo }}">"{{ $vehiculos->placa }}"</option>
-                                @endforeach
-                            </select>
-                        </div>
-                        <label for="cod_chata">Chata</label>
-                        <div class="dropdown">
-                            <select name='cod_chata' id='cod_chata' class="form-control">
-                                <option value='{{$entregas->cod_chata}}'>Seleccionar</option>
-                                @foreach ($chata as $chatas)
-                                <option value="{{ $chatas->codigo }}">"{{ $chatas->tara }}"</option>
                                 @endforeach
                             </select>
                         </div>

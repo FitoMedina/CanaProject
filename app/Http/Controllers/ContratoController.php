@@ -23,7 +23,7 @@ class ContratoController extends Controller
         $contrato = DB::table('contrato')
         ->join('trabajadores', 'contrato.cod_trabajador', '=', 'trabajadores.codigo')
         ->join('canero', 'contrato.cod_canero', '=', 'canero.cod_canero')
-        ->selectRaw('contrato.*, canero.nombre as canero, trabajadores.nombre as trabajador, IF(contrato.incentivo = "1", "Si", "No") as incentivob, IF(contrato.viatico = "1", "Si", "No") as viaticob')
+        ->selectRaw('contrato.*, canero.nombre as canero, trabajadores.nombre as trabajador')
         ->where('contrato.indicador', '=', 'A')
         ->where('canero.indicador', '=', 'A')
         ->where('trabajadores.indicador', '=', 'A')
@@ -72,23 +72,20 @@ class ContratoController extends Controller
         $codigo = $contrato->codigo + 10;
         }
 
-        
-
-        if($request->incentivo=="on"){
-            $request->incentivo= 1;
-        }else{
-            $request->incentivo= 0;
+        if($request->fecha_fin==null){
+            $request->fecha_fin = '2050-01-01';
         }
-        if($request->viatico=="on"){
-            $request->viatico= 1;
-        }else{
-            $request->viatico= 0;
+        if($request->monto_incentivo==null){
+            $request->monto_incentivo = 0;
+        }
+        if($request->monto_viaje==null){
+            $request->monto_viaje = 0;
         }
 
         request()->validate([
             'fecha_inicio' => ['required', 'max:255'],
-            'fecha_fin' => ['required', 'max:255'],
-            'monto_incentivo' => ['required', 'max:255'],
+            //'fecha_fin' => ['required', 'max:255'],
+            //'monto_incentivo' => ['required', 'max:255'],
             'sueldo' => ['required', 'max:255'],
         ]);
 
@@ -97,10 +94,9 @@ class ContratoController extends Controller
         $contrato->faltas = 0;
         $contrato->fecha_inicio = $request->fecha_inicio;
         $contrato->fecha_fin = $request->fecha_fin;
-        $contrato->incentivo = $request->incentivo;
         $contrato->monto_incentivo = $request->monto_incentivo;
+        $contrato->monto_viaje = $request->monto_viaje;
         $contrato->sueldo = $request->sueldo;
-        $contrato->viatico = $request->viatico;
         $contrato->cod_trabajador = $request->cod_trabajador;
         $contrato->cod_canero = $request->cod_canero;
         $contrato->fecha_proceso = date('Y-m-d H:i:s');
@@ -144,8 +140,8 @@ class ContratoController extends Controller
         request()->validate([
             'faltas' => ['required', 'max:255', 'integer'],
             'fecha_inicio' => ['required', 'max:255'],
-            'fecha_fin' => ['required', 'max:255'],
-            'monto_incentivo' => ['required', 'max:255'],
+            //'fecha_fin' => ['required', 'max:255'],
+            //'monto_incentivo' => ['required', 'max:255'],
             'sueldo' => ['required', 'max:255'],
         ]);
 
@@ -154,27 +150,24 @@ class ContratoController extends Controller
         $contrato1->indicador = 'D';
         $contrato1->save();
 
-        if($request->incentivo=="on"){
-            $request->incentivo= 1;
-        }else{
-            $request->incentivo= 0;
+        if($request->monto_incentivo==null){
+            $request->monto_incentivo = 0;
         }
-        if($request->viatico=="on"){
-            $request->viatico= 1;
-        }else{
-            $request->viatico= 0;
+        if($request->fecha_fin==null){
+            $request->fecha_fin = '2050-01-01';
         }
-
+        if($request->monto_viaje==null){
+            $request->monto_viaje = 0;
+        }
 
         $contrato = new Contrato();
         $contrato->codigo = $contrato1->codigo;
         $contrato->faltas = $request->faltas;
         $contrato->fecha_inicio = $request->fecha_inicio;
         $contrato->fecha_fin = $request->fecha_fin;
-        $contrato->incentivo = $request->incentivo;
         $contrato->monto_incentivo = $request->monto_incentivo;
+        $contrato->monto_viaje = $request->monto_viaje;
         $contrato->sueldo = $request->sueldo;
-        $contrato->viatico = $request->viatico;
         $contrato->cod_trabajador = $request->cod_trabajador;
         $contrato->cod_canero = $request->cod_canero;
         $contrato->fecha_proceso = date('Y-m-d H:i:s');
@@ -216,10 +209,9 @@ class ContratoController extends Controller
         $contrato->faltas = $request->faltas;
         $contrato->fecha_inicio = $contrato1->fecha_inicio;
         $contrato->fecha_fin = $contrato1->fecha_fin;
-        $contrato->incentivo = $contrato1->incentivo;
         $contrato->monto_incentivo = $contrato1->monto_incentivo;
+        $contrato->monto_viaje = $request->monto_viaje;
         $contrato->sueldo = $contrato1->sueldo;
-        $contrato->viatico = $contrato1->viatico;
         $contrato->cod_trabajador = $contrato1->cod_trabajador;
         $contrato->cod_canero = $contrato1->cod_canero;
         $contrato->fecha_proceso = date('Y-m-d H:i:s');

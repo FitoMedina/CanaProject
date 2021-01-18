@@ -17,9 +17,11 @@ class PagoController extends Controller
     {
         $pago = DB::table('pago')
         ->join('contrato', 'pago.cod_contrato', '=', 'contrato.codigo')
-        ->selectRaw('pago.*, (case when pago.tipo = 1 then "Racion" when pago.tipo = 2 then "A cuenta" end) as tipo_pago, contrato.codigo as contrato ')
+        ->join('trabajadores', 'trabajadores.codigo', '=', 'contrato.cod_trabajador')
+        ->selectRaw('trabajadores.nombre as trabajador, pago.*, (case when pago.tipo = 1 then "Racion" when pago.tipo = 2 then "A cuenta" end) as tipo_pago, contrato.codigo as contrato ')
         ->where('contrato.indicador', '=', 'A')
         ->where('pago.indicador', '=', 'A')
+        ->where('trabajadores.indicador', '=', 'A')
         ->get();
 
         $contrato = DB::table('contrato')

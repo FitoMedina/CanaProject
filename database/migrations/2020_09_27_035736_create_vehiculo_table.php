@@ -16,9 +16,7 @@ class CreateVehiculoTable extends Migration
         Schema::create('vehiculo', function (Blueprint $table) {
             $table->integer('id', true);
             $table->integer('codigo');
-            $table->string('color');
-            $table->string('marca');
-            $table->integer('modelo');
+            $table->string('tara');
             $table->string('placa');
             $table->string('tipo');
             $table->integer('cod_canero');

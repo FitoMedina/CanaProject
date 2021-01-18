@@ -37,9 +37,10 @@
                 <table id="lotes" class="table table-bordered table-striped">
                     <thead>
                         <tr>
-                            <th>Codigo</th>
-                            <th>Distancia</th>
+                            <th>Descripcion</th>
                             <th>Propiedad</th>
+                            <th>Vaiedad</th>
+                            <th>Edad</th>
                             <th>Creado</th>
                             <th>Acciones</th>
                         </tr>
@@ -47,9 +48,10 @@
                     <tbody>
                         @foreach ($lote as $lotes)
                         <tr>
-                            <td>{{$lotes->codigo}}</td>
-                            <td>{{$lotes->distancia}}</td>
+                            <td>{{$lotes->descripcion}}</td>
                             <td>{{$lotes->propiedad}}</td>
+                            <td>{{$lotes->variedad}}</td>
+                            <td>{{$lotes->edad}}</td>
                             <td>{{$lotes->fecha_proceso}}</td>
                             <td>
                                 <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#modal-update-lote-{{$lotes->id}}">Editar</button>
@@ -88,8 +90,12 @@
             {{ csrf_field() }}
                 <div class="modal-body">
                     <div class="form-group">
-                        <label for="distancia">Distancia</label>
-                        <input type="text" name="distancia" class="form-control" id="distancia" >
+                        <label for="descripcion">Descripcion</label>
+                        <input type="text" name="descripcion" class="form-control" id="descripcion" >
+                        <label for="variedad">Variedad</label>
+                        <input type="text" name="variedad" class="form-control" id="variedad" >
+                        <label for="edad">Edad</label>
+                        <input type="text" name="edad" class="form-control" id="edad" >
                         <label for="cod_propiedad">Propiedad</label>
                         <div class="dropdown">
                             <select name='cod_propiedad' id='cod_propiedad' class="form-control">

@@ -44,9 +44,8 @@
                             <th>Interes</th>
                             <th>Monto</th>
                             <th>Motivo</th>
-                            <th>Camion</th>
-                            <th>Chata</th>
-                            <th>Chata</th>
+                            <th>Vehiculo</th>
+                            <th>Lote</th>
                             <th>Cañero</th>
                             <th>Creado</th>
                             <th>Acciones</th>
@@ -59,8 +58,7 @@
                             <td>{{$gastos->interes}}</td>
                             <td>{{$gastos->monto}}</td>
                             <td>{{$gastos->motivo}}</td>
-                            <td>{{$gastos->cod_camion}}</td>
-                            <td>{{$gastos->cod_chata}}</td>
+                            <td>{{$gastos->cod_vehiculo}}</td>
                             <td>{{$gastos->cod_lote}}</td>
                             <td>{{$gastos->cod_canero}}</td>
                             <td>{{$gastos->fecha_proceso}}</td>
@@ -117,24 +115,16 @@
                                 @endforeach
                             </select>
                         </div>
-                        <label for="cod_camion">Camion</label>
+                        <label for="cod_vehiculo">Vehiculo</label>
                         <div class="dropdown">
-                            <select name='cod_camion' id='cod_camion' class="form-control">
+                            <select name='cod_vehiculo' id='cod_vehiculo' class="form-control">
                                 <option value=''>Seleccionar</option>
                                 @foreach ($vehiculo as $vehiculos)
                                 <option value="{{ $vehiculos->codigo }}">"{{ $vehiculos->placa }}"</option>
                                 @endforeach
                             </select>
                         </div>
-                        <label for="cod_chata">Chata</label>
-                        <div class="dropdown">
-                            <select name='cod_chata' id='cod_chata' class="form-control">
-                                <option value=''>Seleccionar</option>
-                                @foreach ($chata as $chatas)
-                                <option value="{{ $chatas->codigo }}">"{{ $chatas->tara }}"</option>
-                                @endforeach
-                            </select>
-                        </div>
+                        
                         <label for="cod_lote">Lote</label>
                         <div class="dropdown">
                             <select name='cod_lote' id='cod_lote' class="form-control">

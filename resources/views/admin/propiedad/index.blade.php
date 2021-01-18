@@ -37,11 +37,9 @@
                 <table id="propiedades" class="table table-bordered table-striped">
                     <thead>
                         <tr>
-                            <th>Codigo</th>
                             <th>Nombre</th>
                             <th>Hectareas</th>
                             <th>Distancia</th>
-                            <th>Cañero</th>
                             <th>Creado</th>
                             <th>Acciones</th>
                         </tr>
@@ -49,11 +47,9 @@
                     <tbody>
                         @foreach ($propiedad as $propiedades)
                         <tr>
-                            <td>{{$propiedades->codigo}}</td>
                             <td>{{$propiedades->nombre}}</td>
                             <td>{{$propiedades->hectareas}}</td>
                             <td>{{$propiedades->ubicacion}}</td>
-                            <td>{{$propiedades->canero}}</td>
                             <td>{{$propiedades->fecha_proceso}}</td>
                             <td>
                                 <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#modal-update-propiedad-{{$propiedades->id}}">Editar</button>
@@ -98,15 +94,6 @@
                         <input type="text" name="hectareas" class="form-control" id="hectareas">
                         <label for="ubicacion">Distancia</label>
                         <input type="text" name="ubicacion" class="form-control" id="ubicacion" >
-                        <label for="cod_canero">Cañero</label>
-                        <div class="dropdown">
-                            <select name='cod_canero' id='cod_canero' class="form-control">
-                                <option value=''>Seleccionar</option>
-                                @foreach ($canero as $caneros)
-                                <option value="{{ $caneros->cod_canero }}">"{{ $caneros->nombre }}"</option>
-                                @endforeach
-                            </select>
-                        </div>
                     </div>
                 </div>
 

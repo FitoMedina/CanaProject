@@ -65,18 +65,14 @@ class VehiculoController extends Controller
         $codigo = $vehiculo->codigo + 10;
         }
         request()->validate([
-            'color' => ['required', 'max:255'],
-            'marca' => ['required', 'max:255'],
-            'modelo' => ['required', 'max:99999999999', 'integer'],
+            'tara' => ['required', 'max:255'],
             'placa' => ['required', 'max:255'],
             'tipo' => ['required', 'max:255'],
         ]);
 
         $vehiculo = new Vehiculo();
         $vehiculo->codigo = $codigo;
-        $vehiculo->color = $request->color;
-        $vehiculo->marca = $request->marca;
-        $vehiculo->modelo = $request->modelo;
+        $vehiculo->tara = $request->tara;
         $vehiculo->placa = $request->placa;
         $vehiculo->tipo = $request->tipo;
         $vehiculo->cod_canero = $request->cod_canero;
@@ -119,9 +115,7 @@ class VehiculoController extends Controller
     public function update(Request $request, $id)
     {
         request()->validate([
-            'color' => ['required', 'max:255'],
-            'marca' => ['required', 'max:255'],
-            'modelo' => ['required', 'max:99999999999', 'integer'],
+            'tara' => ['required', 'max:255'],
             'placa' => ['required', 'max:255'],
             'tipo' => ['required', 'max:255'],
         ]);
@@ -133,9 +127,7 @@ class VehiculoController extends Controller
 
         $vehiculo = new Vehiculo();
         $vehiculo->codigo = $vehiculo1->codigo;
-        $vehiculo->color = $request->color;
-        $vehiculo->marca = $request->marca;
-        $vehiculo->modelo = $request->modelo;
+        $vehiculo->tara = $request->tara;
         $vehiculo->placa = $request->placa;
         $vehiculo->tipo = $request->tipo;
         $vehiculo->cod_canero = $request->cod_canero;

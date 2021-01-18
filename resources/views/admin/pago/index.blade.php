@@ -41,6 +41,7 @@
                     <thead>
                         <tr>
                             <th>Codigo</th>
+                            <th>Trabajador</th>
                             <th>Fecha</th>
                             <th>Monto</th>
                             <th>Tipo</th>
@@ -53,6 +54,7 @@
                         @foreach ($pago as $pagos)
                         <tr>
                             <td>{{$pagos->codigo}}</td>
+                            <td>{{$pagos->trabajador}}</td>
                             <td>{{$pagos->fecha}}</td>
                             <td>{{$pagos->monto}}</td>
                             <td>{{$pagos->tipo_pago}}</td>

@@ -26,11 +26,12 @@
                     <thead>
                         <tr>
                             <th>Contrato</th>
+                            <th>Trabajador</th>
                             <th>Fecha inicio</th>
                             <th>Fecha fin</th>
                             <th>Monto incentivo</th>
+                            <th>Monto viaje</th>
                             <th>Sueldo</th>
-                            <th>Trabajador</th>
                             <th>Faltas</th>
                             <th>Dias Trab.</th>
                             <th>Dias Tot.</th>
@@ -47,11 +48,12 @@
                         @foreach ($contrato as $contratos)
                         <tr>
                             <td>{{$contratos->codigo}}</td>
+                            <td>{{$contratos->trabajador}}</td>
                             <td>{{$contratos->fecha_inicio}}</td>
                             <td>{{$contratos->fecha_fin}}</td>
                             <td>{{$contratos->monto_incentivo}}</td>
+                            <td>{{$contratos->monto_viaje}}</td>
                             <td>{{$contratos->sueldo}}</td>
-                            <td>{{$contratos->trabajador}}</td>
                             <td>{{$contratos->faltas}}</td>
                             <td>{{$contratos->dias_trab}}</td>
                             <td>{{$contratos->dias_tot}}</td>

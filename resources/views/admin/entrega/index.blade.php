@@ -46,8 +46,7 @@
                             <th>Peso neto</th>
                             <th>Corte</th>
                             <th>Tipo</th>
-                            <th>Camion</th>
-                            <th>Chata</th>
+                            <th>Vehiculo</th>
                             <th>Trabajador</th>
                             <th>Cañero</th>
                             <th>Creado</th>
@@ -63,7 +62,6 @@
                             <td>{{$entregas->peso_neto}}</td>
                             <td>{{$entregas->corte}}</td>
                             <td>{{$entregas->tipo}}</td>
-                            <td>{{$entregas->chata}}</td>
                             <td>{{$entregas->vehiculo}}</td>
                             <td>{{$entregas->trabajador}}</td>
                             <td>{{$entregas->canero}}</td>
@@ -130,21 +128,12 @@
                                 @endforeach
                             </select>
                         </div>
-                        <label for="cod_camion">Camion</label>
+                        <label for="cod_vehiculo">Camion</label>
                         <div class="dropdown">
-                            <select name='cod_camion' id='cod_camion' class="form-control">
+                            <select name='cod_vehiculo' id='cod_vehiculo' class="form-control">
                                 <option value=''>Seleccionar</option>
                                 @foreach ($vehiculo as $vehiculos)
                                 <option value="{{ $vehiculos->codigo }}">"{{ $vehiculos->placa }}"</option>
-                                @endforeach
-                            </select>
-                        </div>
-                        <label for="cod_chata">Chata</label>
-                        <div class="dropdown">
-                            <select name='cod_chata' id='cod_chata' class="form-control">
-                                <option value=''>Seleccionar</option>
-                                @foreach ($chata as $chatas)
-                                <option value="{{ $chatas->codigo }}">"{{ $chatas->tara }}"</option>
                                 @endforeach
                             </select>
                         </div>

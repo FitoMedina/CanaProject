@@ -10,5 +10,5 @@ class Vehiculo extends Model
     use HasFactory;
     protected $table = 'vehiculo';
     public $timestamps = false;
-    protected $fillable = ['codigo','color','marca','modelo','placa','tipo','cod_canero','fecha_proceso','fecha_hasta','indicador'];
+    protected $fillable = ['codigo','tara','placa','tipo','cod_canero','fecha_proceso','fecha_hasta','indicador'];
 }

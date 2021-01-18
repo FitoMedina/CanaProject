@@ -10,5 +10,5 @@ class Entrega extends Model
     use HasFactory;
     protected $table = 'entrega';
     public $timestamps = false;
-    protected $fillable = ['codigo','fecha_entrega','paquete','peso_neto','cod_corte','cod_tipo','cod_chata','cod_camion','cod_trabajador','cod_canero','fecha_proceso','fecha_hasta','indicador'];
+    protected $fillable = ['codigo','fecha_entrega','paquete','peso_neto','cod_corte','cod_tipo','cod_vehiculo','cod_trabajador','cod_canero','fecha_proceso','fecha_hasta','indicador'];
 }

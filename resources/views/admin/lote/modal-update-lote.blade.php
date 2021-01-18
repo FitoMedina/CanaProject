@@ -14,8 +14,12 @@
             {{ csrf_field() }}
                 <div class="modal-body">
                     <div class="form-group">
-                        <label for="distancia">Distancia</label>
-                        <input type="text" name="distancia" class="form-control" id="distancia" value="{{$lotes->distancia}}">
+                        <label for="descripcion">Descripcion</label>
+                        <input type="text" name="descripcion" class="form-control" id="descripcion" value="{{$lotes->descripcion}}">
+                        <label for="variedad">Variedad</label>
+                        <input type="text" name="variedad" class="form-control" id="desvariedadcripcion" value="{{$lotes->variedad}}">
+                        <label for="edad">Edad</label>
+                        <input type="text" name="edad" class="form-control" id="edad" value="{{$lotes->descripcion}}">
                         <label for="cod_propiedad">Propiedad</label>
                         <div class="dropdown">
                             <select name='cod_propiedad' id='cod_propiedad' class="form-control">

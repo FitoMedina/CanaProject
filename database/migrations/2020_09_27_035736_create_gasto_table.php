@@ -19,8 +19,7 @@ class CreateGastoTable extends Migration
             $table->integer('interes');
             $table->integer('monto');
             $table->integer('motivo');
-            $table->integer('cod_camion');
-            $table->integer('cod_chata');
+            $table->integer('cod_vehiculo');
             $table->integer('cod_lote');
             $table->integer('cod_canero');
             $table->date('fecha_proceso');

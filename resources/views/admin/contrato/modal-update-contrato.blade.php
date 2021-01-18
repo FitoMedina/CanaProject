@@ -20,14 +20,12 @@
                         <input type="date" name="fecha_inicio" class="form-control" id="fecha_inicio" value="{{$contratos->fecha_inicio}}">
                         <label for="fecha_fin">Fecha fin</label>
                         <input type="date" name="fecha_fin" class="form-control" id="fecha_fin"  value="{{$contratos->fecha_fin}}">
-                        <label for="incentivo">Incentivo</label>
-                        <input type="checkbox" class="form-control" id="incentivo" name="incentivo">
                         <label for="monto_incentivo">Monto incentivo</label>
                         <input type="text" name="monto_incentivo" class="form-control" id="monto_incentivo" value="{{$contratos->monto_incentivo}}">
+                        <label for="monto_viaje">Monto viaje(Solo para camioneros)</label>
+                        <input type="text" name="monto_viaje" class="form-control" id="monto_viaje" value="{{$contratos->monto_viaje}}">
                         <label for="sueldo">Sueldo</label>
                         <input type="text" name="sueldo" class="form-control" id="sueldo" value="{{$contratos->sueldo}}">
-                        <label for="viatico">Viativo</label>
-                        <input type="checkbox" class="form-control" id="viatico" name="viatico" checked>
                         <label for="cod_canero">Cañero</label>
                         <div class="dropdown">
                             <select name='cod_canero' id='cod_canero' class="form-control">

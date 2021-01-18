@@ -24,15 +24,13 @@ class EntregaController extends Controller
         $entrega = DB::table('entrega')
         ->join('trabajadores', 'entrega.cod_trabajador', '=', 'trabajadores.codigo')
         ->join('canero', 'entrega.cod_canero', '=', 'canero.cod_canero')
-        ->join('vehiculo', 'entrega.cod_camion', '=', 'vehiculo.codigo')
-        ->join('chata', 'entrega.cod_chata', '=', 'chata.codigo')
+        ->join('vehiculo', 'entrega.cod_vehiculo', '=', 'vehiculo.codigo')
         ->join('corte', 'entrega.cod_corte', '=', 'corte.codigo')
         ->join('tipo_cana', 'entrega.cod_tipo', '=', 'tipo_cana.codigo')
-        ->selectRaw('entrega.*, canero.nombre as canero, trabajadores.nombre as trabajador, vehiculo.placa as vehiculo, chata.tara as chata, corte.descripcion as corte, tipo_cana.descripcion as tipo')
+        ->selectRaw('entrega.*, canero.nombre as canero, trabajadores.nombre as trabajador, vehiculo.placa as vehiculo, vehiculo.tara as tara, corte.descripcion as corte, tipo_cana.descripcion as tipo')
         ->where('entrega.indicador', '=', 'A')
         ->where('trabajadores.indicador', '=', 'A')
         ->where('vehiculo.indicador', '=', 'A')
-        ->where('chata.indicador', '=', 'A')
         ->where('corte.indicador', '=', 'A')
         ->where('tipo_cana.indicador', '=', 'A')
         ->get();
@@ -52,11 +50,6 @@ class EntregaController extends Controller
         ->where('indicador', '=', 'A')
         ->get();
 
-        $chata = DB::table('chata')
-        ->select(DB::raw('*'))
-        ->where('indicador', '=', 'A')
-        ->get();
-
         $corte = DB::table('corte')
         ->select(DB::raw('*'))
         ->where('indicador', '=', 'A')
@@ -69,7 +62,7 @@ class EntregaController extends Controller
 
 
 
-        return view('admin\entrega\index', compact('entrega','canero','trabajador','vehiculo','chata','corte','tipo'));
+        return view('admin\entrega\index', compact('entrega','canero','trabajador','vehiculo','corte','tipo'));
     }
 
     /**
@@ -108,8 +101,7 @@ class EntregaController extends Controller
             'peso_neto' => ['required', 'max:255'],
             'cod_corte' => ['required', 'max:255'],
             'cod_tipo' => ['required', 'max:255'],
-            'cod_chata' => ['required', 'max:255'],
-            'cod_camion' => ['required', 'max:255'],
+            'cod_vehiculo' => ['required', 'max:255'],
             'cod_trabajador' => ['required', 'max:255'],
             'cod_canero' => ['required', 'max:255'],
         ]);
@@ -122,8 +114,7 @@ class EntregaController extends Controller
         $entrega->peso_neto = $request->peso_neto;
         $entrega->cod_corte = $request->cod_corte;
         $entrega->cod_tipo = $request->cod_tipo;
-        $entrega->cod_chata = $request->cod_chata;
-        $entrega->cod_camion = $request->cod_camion;
+        $entrega->cod_vehiculo = $request->cod_vehiculo;
         $entrega->cod_trabajador = $request->cod_trabajador;
         $entrega->cod_canero = $request->cod_canero;
         $entrega->fecha_proceso = date('Y-m-d H:i:s');
@@ -171,8 +162,7 @@ class EntregaController extends Controller
             'peso_neto' => ['required', 'max:255'],
             'cod_corte' => ['required', 'max:255'],
             'cod_tipo' => ['required', 'max:255'],
-            'cod_chata' => ['required', 'max:255'],
-            'cod_camion' => ['required', 'max:255'],
+            'cod_vehiculo' => ['required', 'max:255'],
             'cod_trabajador' => ['required', 'max:255'],
             'cod_canero' => ['required', 'max:255'],
         ]);
@@ -189,8 +179,7 @@ class EntregaController extends Controller
         $entrega->peso_neto = $request->peso_neto;
         $entrega->cod_corte = $request->cod_corte;
         $entrega->cod_tipo = $request->cod_tipo;
-        $entrega->cod_chata = $request->cod_chata;
-        $entrega->cod_camion = $request->cod_camion;
+        $entrega->cod_vehiculo = $request->cod_vehiculo;
         $entrega->cod_trabajador = $request->cod_trabajador;
         $entrega->cod_canero = $request->cod_canero;
         $entrega->fecha_proceso = date('Y-m-d H:i:s');

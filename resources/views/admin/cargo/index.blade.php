@@ -37,7 +37,6 @@
                 <table id="cargos" class="table table-bordered table-striped">
                     <thead>
                         <tr>
-                            <th>Codigo</th>
                             <th>Cargo</th>
                             <th>Sueldo</th>
                             <th>Creado</th>
@@ -47,7 +46,6 @@
                     <tbody>
                         @foreach ($cargo as $cargos)
                         <tr>
-                            <td>{{$cargos->codigo}}</td>
                             <td>{{$cargos->nombre}}</td>
                             <td>{{$cargos->sueldo}}</td>
                             <td>{{$cargos->fecha_proceso}}</td>

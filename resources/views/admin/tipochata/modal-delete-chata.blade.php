@@ -1,5 +1,5 @@
 <!-- /.modal update -->
-<div class="modal fade" id="modal-delete-chata-{{$chatas->id}}">
+<div class="modal fade" id="modal-delete-chata-{{$tipo_chatas->id}}">
     <div class="modal-dialog">
         <div class="modal-content bg-default">
 
@@ -9,7 +9,7 @@
                     <span aria-hidden="true">&times;</span></button>
             </div>
 
-            <form action="/chata/{{$chatas->id}}" method="POST">
+            <form action="/tipochata/{{$tipo_chatas->id}}" method="POST">
             <input type="hidden" name="_method" value="DELETE">
             {{ csrf_field() }}
                 <div class="modal-body">

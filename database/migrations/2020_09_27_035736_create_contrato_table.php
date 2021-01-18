@@ -19,10 +19,9 @@ class CreateContratoTable extends Migration
             $table->integer('faltas');
             $table->date('fecha_inicio');
             $table->date('fecha_fin');
-            $table->integer('incentivo');
             $table->decimal('monto_incentivo', 10, 0);
+            $table->decimal('monto_viaje', 10, 0);
             $table->decimal('sueldo', 10, 0);
-            $table->tinyInteger('viatico');
             $table->integer('cod_trabajador');
             $table->integer('cod_canero');
             $table->date('fecha_proceso');

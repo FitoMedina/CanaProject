@@ -19,7 +19,7 @@ class CreatePropiedadTable extends Migration
             $table->integer('hectareas');
             $table->string('nombre');
             $table->string('ubicacion');
-            $table->integer('cod_canero');
+            //$table->integer('cod_canero');
             $table->date('fecha_proceso');
             $table->date('fecha_hasta');
             $table->char('indicador', 1);

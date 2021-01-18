@@ -298,8 +298,8 @@ return [
                     'icon' => 'fas fa-fw fa-truck-pickup',
                 ],
                 [
-                    'text' => 'Chatas',
-                    'url'  => 'chata',
+                    'text' => 'Tipo Chatas',
+                    'url'  => 'tipochata',
                     'icon' => 'fas fa-fw fa-trailer',
                 ],
             ],

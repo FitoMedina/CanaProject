@@ -16,7 +16,9 @@ class CreateLoteTable extends Migration
         Schema::create('lote', function (Blueprint $table) {
             $table->integer('id', true);
             $table->integer('codigo');
-            $table->integer('distancia');
+            $table->string('descripcion');
+            $table->string('variedad');
+            $table->string('edad');
             $table->integer('cod_propiedad');
             $table->date('fecha_proceso');
             $table->date('fecha_hasta');

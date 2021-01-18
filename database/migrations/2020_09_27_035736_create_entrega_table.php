@@ -21,8 +21,7 @@ class CreateEntregaTable extends Migration
             $table->integer('peso_neto');
             $table->integer('cod_corte');
             $table->integer('cod_tipo');
-            $table->integer('cod_chata');
-            $table->integer('cod_camion');
+            $table->integer('cod_vehiculo');
             $table->integer('cod_trabajador');
             $table->integer('cod_canero');
             $table->date('fecha_proceso');

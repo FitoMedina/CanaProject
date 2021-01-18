@@ -10,5 +10,5 @@ class Propiedad extends Model
     use HasFactory;
     protected $table = 'propiedad';
     public $timestamps = false;
-    protected $fillable = ['codigo','hectareas','nombre','ubicacion','cod_canero','fecha_proceso','fecha_hasta','indicador'];
+    protected $fillable = ['codigo','hectareas','nombre','ubicacion','fecha_proceso','fecha_hasta','indicador'];
 }

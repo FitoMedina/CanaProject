@@ -20,20 +20,21 @@ class PropiedadController extends Controller
     
     public function index()
     {
+        //$propiedad = DB::table('propiedad')
+        //->join('canero', 'canero.cod_canero', '=', 'propiedad.cod_canero')
+        //->select('propiedad.*','canero.nombre as canero')
+        //->where('propiedad.indicador', '=', 'A')
+        //->where('canero.indicador', '=', 'A')
+        //->get();
+
         $propiedad = DB::table('propiedad')
-        ->join('canero', 'canero.cod_canero', '=', 'propiedad.cod_canero')
-        ->select('propiedad.*','canero.nombre as canero')
-        ->where('propiedad.indicador', '=', 'A')
-        ->where('canero.indicador', '=', 'A')
-        ->get();
-
-        $canero = DB::table('canero')
-        ->select(DB::raw('*'))
-        ->where('indicador', '=', 'A')
-        ->get();
+                     ->select(DB::raw('*'))
+                     ->where('indicador', '=', 'A')
+                     ->get();
 
 
-        return view('admin\propiedad\index', compact('propiedad','canero'));
+
+        return view('admin\propiedad\index', compact('propiedad'));
     }
 
     /**
@@ -66,7 +67,7 @@ class PropiedadController extends Controller
         }
 
         request()->validate([
-            'ubicacion' => ['required', 'max:99999999999', 'integer'],
+            'ubicacion' => ['required', 'max:99999999999'],
             'nombre' => ['required', 'max:255'],
             'hectareas' => ['required', 'max:99999999999', 'integer'],
         ]);
@@ -76,7 +77,7 @@ class PropiedadController extends Controller
         $propiedad->hectareas = $request->hectareas;
         $propiedad->nombre = $request->nombre;
         $propiedad->ubicacion = $request->ubicacion;
-        $propiedad->cod_canero = $request->cod_canero;
+        //$propiedad->cod_canero = $request->cod_canero;
         $propiedad->fecha_proceso = date('Y-m-d H:i:s');
         $propiedad->fecha_hasta = '2050-01-01';
         $propiedad->indicador =  'A';
@@ -116,7 +117,7 @@ class PropiedadController extends Controller
     public function update(Request $request, $id)
     {
         request()->validate([
-            'ubicacion' => ['required', 'max:255', 'integer'],
+            'ubicacion' => ['required', 'max:255' ],
             'nombre' => ['required', 'max:255'],
             'hectareas' => ['required', 'max:99999999999', 'integer'],
         ]);
@@ -131,7 +132,7 @@ class PropiedadController extends Controller
         $propiedad->hectareas = $request->hectareas;
         $propiedad->nombre = $request->nombre;
         $propiedad->ubicacion = $request->ubicacion;
-        $propiedad->cod_canero = $request->cod_canero;
+        //$propiedad->cod_canero = $request->cod_canero;
         $propiedad->fecha_proceso = date('Y-m-d H:i:s');
         $propiedad->fecha_hasta = '2050-01-01';
         $propiedad->indicador =  'A';

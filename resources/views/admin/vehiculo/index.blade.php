@@ -38,9 +38,7 @@
                     <thead>
                         <tr>
                             <th>Codigo</th>
-                            <th>Color</th>
-                            <th>Marca</th>
-                            <th>Modelo</th>
+                            <th>Tara</th>
                             <th>Placa</th>
                             <th>Tipo</th>
                             <th>Cañero</th>
@@ -52,9 +50,7 @@
                         @foreach ($vehiculo as $vehiculos)
                         <tr>
                             <td>{{$vehiculos->codigo}}</td>
-                            <td>{{$vehiculos->color}}</td>
-                            <td>{{$vehiculos->marca}}</td>
-                            <td>{{$vehiculos->modelo}}</td>
+                            <td>{{$vehiculos->tara}}</td>
                             <td>{{$vehiculos->placa}}</td>
                             <td>{{$vehiculos->tipo}}</td>
                             <td>{{$vehiculos->canero}}</td>
@@ -96,12 +92,8 @@
             {{ csrf_field() }}
                 <div class="modal-body">
                     <div class="form-group">
-                        <label for="color">Color</label>
-                        <input type="text" name="color" class="form-control" id="color" >
-                        <label for="marca">Marca</label>
-                        <input type="text" name="marca" class="form-control" id="marca">
-                        <label for="modelo">Modelo</label>
-                        <input type="text" name="modelo" class="form-control" id="modelo" >
+                        <label for="tara">Tara</label>
+                        <input type="text" name="tara" class="form-control" id="tara" >
                         <label for="placa">Placa</label>
                         <input type="text" name="placa" class="form-control" id="placa" >
                         <label for="tipo">Tipo</label>

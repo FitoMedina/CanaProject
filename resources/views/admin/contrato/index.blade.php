@@ -49,10 +49,9 @@
                             <th>Faltas</th>
                             <th>Fecha inicio</th>
                             <th>Fecha fin</th>
-                            <th>Incentivo</th>
                             <th>Monto incentivo</th>
+                            <th>Monto viaje</th>
                             <th>Sueldo</th>
-                            <th>Viatico</th>
                             <th>Trabajador</th>
                             <th>Cañero</th>
                             <th>Creado</th>
@@ -66,10 +65,9 @@
                             <td>{{$contratos->faltas}}</td>
                             <td>{{$contratos->fecha_inicio}}</td>
                             <td>{{$contratos->fecha_fin}}</td>
-                            <td>{{$contratos->incentivob}}</td>
                             <td>{{$contratos->monto_incentivo}}</td>
+                            <td>{{$contratos->monto_viaje}}</td>
                             <td>{{$contratos->sueldo}}</td>
-                            <td>{{$contratos->viaticob}}</td>
                             <td>{{$contratos->trabajador}}</td>
                             <td>{{$contratos->canero}}</td>
                             <td>{{$contratos->fecha_proceso}}</td>
@@ -124,14 +122,12 @@
                         <input type="date" name="fecha_inicio" class="form-control" id="fecha_inicio"  >
                         <label for="fecha_fin">Fecha fin</label>
                         <input type="date" name="fecha_fin" class="form-control" id="fecha_fin" >
-                        <label for="incentivo">Incentivo</label><br>
-                        <input type="checkbox" class="form-control" id="incentivo" name="incentivo">
                         <label for="monto_incentivo">Monto incentivo</label>
                         <input type="text" name="monto_incentivo" class="form-control" id="monto_incentivo" >
+                        <label for="monto_viaje">Monto viaje(Solo para Camioneros)</label>
+                        <input type="text" name="monto_viaje" class="form-control" id="monto_viaje" >
                         <label for="sueldo">Sueldo</label>
                         <input type="text" name="sueldo" class="form-control" id="sueldo" >
-                        <label for="viatico">Viatico</label>
-                        <input type="checkbox" class="form-control" id="viatico" name="viatico">
                         <label for="cod_canero">Cañero</label>
                         <div class="dropdown">
                             <select name='cod_canero' id='cod_canero' class="form-control">
